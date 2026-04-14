@@ -19,16 +19,22 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;}
 .page{max-width:960px;margin:0 auto;padding:1.5rem 1rem 3rem;}
 
-.banner{background:#FFF8E6;border:1px solid #F0C040;border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:12px;}
+.banner{border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:12px;}
+.banner.yellow{background:#FFF8E6;border:1px solid #F0C040;}
+.banner.red{background:#FEF0F0;border:1px solid #F0A0A0;}
 .banner.hidden{display:none;}
-.banner h4{font-size:14px;font-weight:500;color:#854F0B;margin-bottom:4px;}
-.banner p{font-size:13px;color:#633806;line-height:1.5;}
+.banner h4{font-size:14px;font-weight:500;margin-bottom:4px;}
+.banner.yellow h4{color:#854F0B;} .banner.red h4{color:#7A1F1F;}
+.banner p{font-size:13px;line-height:1.5;}
+.banner.yellow p{color:#633806;} .banner.red p{color:#7A1F1F;}
 .banner input{width:100%;margin-top:8px;font-size:13px;padding:6px 9px;border:1px solid #F0C040;border-radius:var(--radius);background:white;color:#1a1a18;font-family:inherit;}
-.banner-btns{display:flex;gap:8px;margin-top:8px;}
+.banner-btns{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
 .banner-btns button{font-size:13px;padding:5px 14px;border-radius:var(--radius);cursor:pointer;font-family:inherit;}
-.btn-connect{background:#185FA5;color:white;border:none;}
-.btn-connect:hover{background:#0C447C;}
-.btn-dismiss{background:none;border:1px solid #F0C040;color:#633806;}
+.btn-connect{background:#185FA5;color:white;border:none;} .btn-connect:hover{background:#0C447C;}
+.btn-test{background:none;border:1px solid #185FA5;color:#185FA5;} .btn-test:hover{background:#e6f1fb;}
+.btn-dismiss{background:none;border:1px solid #ccc;color:#555;}
+.btn-change{background:none;border:1px solid #ccc;color:var(--text2);font-size:12px;padding:3px 10px;border-radius:var(--radius);cursor:pointer;margin-left:8px;}
+.btn-change:hover{background:var(--bg2);}
 
 .status-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);margin-bottom:10px;min-height:20px;}
 .sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#BA7517;}
@@ -45,13 +51,13 @@ header h1{font-size:20px;font-weight:500;}
 .mnav button{background:none;border:0.5px solid var(--border2);border-radius:var(--radius);padding:4px 14px;cursor:pointer;font-size:15px;color:var(--text);}
 .mnav button:hover{background:var(--bg2);}
 .mtitle{font-size:18px;font-weight:500;min-width:170px;text-align:center;}
-.legend{display:flex;gap:12px;flex-wrap:wrap;}
+.legend{display:flex;gap:10px;flex-wrap:wrap;}
 .leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text2);}
 .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 
 .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .dh{background:var(--bg2);padding:6px 0;text-align:center;font-size:12px;font-weight:500;color:var(--text2);border-bottom:0.5px solid var(--border);}
-.dc{min-height:84px;padding:5px;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg);cursor:pointer;transition:background .1s;vertical-align:top;}
+.dc{min-height:84px;padding:5px;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg);cursor:pointer;transition:background .1s;}
 .dc:hover{background:var(--bg2);}
 .dc.om{background:var(--bg3);opacity:.4;cursor:default;pointer-events:none;}
 .dc:nth-child(7n){border-right:none;}
@@ -88,19 +94,15 @@ button.danger:hover{background:#791F1F;}
 .edet .em{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.6;}
 .edet .en{font-size:13px;color:var(--text);margin-top:8px;font-style:italic;border-top:0.5px solid var(--border);padding-top:8px;}
 .tbadge{display:inline-block;font-size:11px;border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle;}
-.multi-day-bar{font-size:9px;border-radius:3px;padding:1px 4px;margin-bottom:2px;opacity:.85;}
-
 .spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border2);border-top-color:var(--blue);border-radius:50%;animation:spin .6s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-
-.date-range-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .date-hint{font-size:11px;color:var(--text3);margin-top:3px;}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <div class="banner" id="setup-banner">
+  <div class="banner yellow" id="setup-banner">
     <div style="font-size:20px;flex-shrink:0;margin-top:2px;">⚙️</div>
     <div style="flex:1;">
       <h4>Connect your Google Sheet</h4>
@@ -108,7 +110,20 @@ button.danger:hover{background:#791F1F;}
       <input type="text" id="url-input" placeholder="https://script.google.com/macros/s/YOUR_ID/exec" />
       <div class="banner-btns">
         <button class="btn-connect" onclick="saveUrl()">Connect</button>
+        <button class="btn-test" onclick="testConnection()">Test connection</button>
         <button class="btn-dismiss" onclick="dismissBanner()">Dismiss</button>
+      </div>
+      <div id="test-result" style="margin-top:8px;font-size:12px;display:none;"></div>
+    </div>
+  </div>
+
+  <div class="banner red hidden" id="error-banner">
+    <div style="font-size:20px;flex-shrink:0;margin-top:2px;">⚠️</div>
+    <div style="flex:1;">
+      <h4 id="error-title">Connection error</h4>
+      <p id="error-msg"></p>
+      <div class="banner-btns" style="margin-top:8px;">
+        <button class="btn-connect" onclick="showSetup()">Update URL</button>
       </div>
     </div>
   </div>
@@ -118,11 +133,12 @@ button.danger:hover{background:#791F1F;}
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
     </div>
     <h1>Island Activity Calendar</h1>
+    <button class="btn-change" onclick="showSetup()" title="Change script URL">⚙ Settings</button>
   </header>
 
   <div class="status-bar">
     <div class="sdot" id="sdot"></div>
-    <span id="stxt">Connecting to shared calendar...</span>
+    <span id="stxt">Connecting...</span>
   </div>
 
   <div class="card">
@@ -141,7 +157,7 @@ button.danger:hover{background:#791F1F;}
     </div>
     <div id="cal-grid" class="cal-grid"></div>
     <div class="cal-footer">
-      <button class="refresh-btn" onclick="loadEvents()">&#8635; Refresh</button>
+      <button class="refresh-btn" onclick="loadEvents(true)">&#8635; Refresh</button>
       <button class="primary" onclick="openAdd(null)">+ Add event</button>
     </div>
   </div>
@@ -162,118 +178,147 @@ const LOCATIONS = {
 };
 const ACTIVITIES = ["Pic Nic","Overnight","Walk / Hike","Snorkeling","Scuba Diving","Aerial","Block"];
 const DEPTS = ["Security","Locations","Other"];
-const DEPT_BG  = {Security:"#FCEBEB",Locations:"#E1F5EE",Other:"#FAEEDA",Block:"#EEEDFE"};
-const DEPT_TC  = {Security:"#A32D2D",Locations:"#0F6E56",Other:"#854F0B",Block:"#3C3489"};
-const ACT_BG   = {Block:"#EEEDFE"};
-const ACT_TC   = {Block:"#3C3489"};
+const DEPT_BG  = {Security:"#FCEBEB",Locations:"#E1F5EE",Other:"#FAEEDA"};
+const DEPT_TC  = {Security:"#A32D2D",Locations:"#0F6E56",Other:"#854F0B"};
 const MONTHS   = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const URL_KEY  = "island_cal_url_v4";
+const URL_KEY  = "island_cal_url_v5";
 const pad = n => String(n).padStart(2,"0");
 
 let events=[], curYear, curMonth, scriptUrl="", refreshTimer=null;
-let pendingResolve=null, pendingReject=null, pendingTimer=null;
 
-// ── URL storage ──────────────────────────────────────────────
 function init(){
   const now=new Date(); curYear=now.getFullYear(); curMonth=now.getMonth();
   scriptUrl=localStorage.getItem(URL_KEY)||"";
   if(scriptUrl) document.getElementById("setup-banner").classList.add("hidden");
-  renderMonth(); loadEvents();
-  refreshTimer=setInterval(loadEvents,30000);
+  renderMonth(); loadEvents(false);
+  refreshTimer=setInterval(()=>loadEvents(false), 30000);
 }
 
 function saveUrl(){
   const v=document.getElementById("url-input").value.trim();
-  if(!v.startsWith("https://script.google.com")){alert("Please paste a valid Google Apps Script URL.");return;}
+  if(!v.startsWith("https://script.google.com")){
+    alert("Please paste a valid Google Apps Script URL starting with https://script.google.com");
+    return;
+  }
   scriptUrl=v; localStorage.setItem(URL_KEY,scriptUrl);
   document.getElementById("setup-banner").classList.add("hidden");
-  loadEvents();
+  document.getElementById("error-banner").classList.add("hidden");
+  loadEvents(true);
 }
-function dismissBanner(){document.getElementById("setup-banner").classList.add("hidden");}
 
-// ── Status ───────────────────────────────────────────────────
+function showSetup(){
+  const b=document.getElementById("setup-banner");
+  b.classList.remove("hidden");
+  if(scriptUrl) document.getElementById("url-input").value=scriptUrl;
+  b.scrollIntoView({behavior:"smooth"});
+}
+
+function dismissBanner(){
+  document.getElementById("setup-banner").classList.add("hidden");
+}
+
 function setStatus(state,msg){
-  const d=document.getElementById("sdot"); d.className="sdot "+(state==="ok"?"green":state==="err"?"red":"");
+  document.getElementById("sdot").className="sdot "+(state==="ok"?"green":state==="err"?"red":"");
   document.getElementById("stxt").textContent=msg;
 }
 
-// ── API via no-cors fetch (most reliable for GAS) ─────────────
-async function apiCall(params){
-  if(!scriptUrl) throw new Error("no_url");
-  const url=new URL(scriptUrl);
-  Object.entries(params).forEach(([k,v])=>url.searchParams.set(k,String(v)));
-
-  // Try fetch with mode no-cors first — GAS supports this via redirect
-  // We use a JSONP approach as the most compatible cross-origin method
+// ── JSONP call ─────────────────────────────────────────────────
+function gasCall(params, timeoutMs){
+  timeoutMs = timeoutMs||20000;
   return new Promise((resolve,reject)=>{
-    const cb="gascb_"+Date.now()+"_"+Math.round(Math.random()*99999);
+    const cb="gc_"+Date.now()+"_"+Math.floor(Math.random()*99999);
     const u=new URL(scriptUrl);
     Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,String(v)));
     u.searchParams.set("callback",cb);
 
-    let done=false;
+    let settled=false;
     const timer=setTimeout(()=>{
-      if(done)return; done=true;
-      cleanup(); reject(new Error("timeout"));
-    },20000);
+      if(settled)return; settled=true;
+      cleanup(); reject(new Error("Request timed out after "+timeoutMs/1000+"s"));
+    }, timeoutMs);
 
     window[cb]=(data)=>{
-      if(done)return; done=true;
+      if(settled)return; settled=true;
       cleanup(); resolve(data);
     };
 
     function cleanup(){
-      clearTimeout(timer); delete window[cb];
-      const s=document.getElementById("gas-script");
-      if(s) s.remove();
+      clearTimeout(timer);
+      delete window[cb];
+      const s=document.getElementById("_gas_script");
+      if(s&&s.parentNode) s.parentNode.removeChild(s);
     }
 
     const script=document.createElement("script");
-    script.id="gas-script";
-    script.onerror=()=>{
-      if(done)return; done=true;
-      cleanup(); reject(new Error("script_failed"));
+    script.id="_gas_script";
+    script.onerror=(e)=>{
+      if(settled)return; settled=true;
+      cleanup();
+      reject(new Error("Could not reach script. Make sure you deployed as 'Anyone' and the URL is correct."));
     };
     script.src=u.toString();
     document.head.appendChild(script);
   });
 }
 
-// ── Load events ───────────────────────────────────────────────
-async function loadEvents(){
-  if(!scriptUrl){setStatus("","Not connected — paste your Apps Script URL in the setup panel above");renderCal();return;}
-  setStatus("","Loading...");
+// ── Test connection button ─────────────────────────────────────
+async function testConnection(){
+  const urlVal=document.getElementById("url-input").value.trim();
+  if(!urlVal.startsWith("https://script.google.com")){
+    alert("Enter a URL first.");return;
+  }
+  const el=document.getElementById("test-result");
+  el.style.display="block";
+  el.style.color="var(--text3)";
+  el.textContent="Testing...";
+  const prev=scriptUrl;
+  scriptUrl=urlVal;
   try{
-    const data=await apiCall({action:"getEvents"});
+    const data=await gasCall({action:"getEvents"},10000);
     if(data.error) throw new Error(data.error);
-    events=(data.events||[]).map(e=>({...e,id:String(e.id)}));
-    setStatus("ok","Live — updated "+new Date().toLocaleTimeString());
+    el.style.color="#0F6E56";
+    el.textContent="✓ Connected! Found "+data.events.length+" event(s). Click Connect to save.";
+  }catch(err){
+    el.style.color="#A32D2D";
+    el.textContent="✗ Failed: "+err.message;
+    scriptUrl=prev;
+  }
+}
+
+// ── Load events ────────────────────────────────────────────────
+async function loadEvents(showSpinner){
+  if(!scriptUrl){
+    setStatus("","Not connected — paste your Apps Script URL above");
+    renderCal(); return;
+  }
+  if(showSpinner) setStatus("","Loading...");
+  try{
+    const data=await gasCall({action:"getEvents"});
+    if(data.error) throw new Error(data.error);
+    events=(data.events||[]).map(e=>({
+      ...e, id:String(e.id),
+      dateStart: e.dateStart||e.date||"",
+      dateEnd:   e.dateEnd||(e.dateStart||e.date||"")
+    }));
+    document.getElementById("error-banner").classList.add("hidden");
+    setStatus("ok","Live — "+events.length+" event(s) — updated "+new Date().toLocaleTimeString());
     renderCal();
   }catch(err){
-    if(err.message==="script_failed"||err.message==="timeout"){
-      setStatus("err","Connection failed — check your Script URL or redeploy");
-    } else {
-      setStatus("err","Error: "+err.message);
-    }
+    setStatus("err","Connection failed");
+    document.getElementById("error-title").textContent="Could not load events";
+    document.getElementById("error-msg").textContent=err.message;
+    document.getElementById("error-banner").classList.remove("hidden");
     renderCal();
   }
 }
 
-// ── Calendar nav ──────────────────────────────────────────────
 function cm(d){curMonth+=d;if(curMonth>11){curMonth=0;curYear++;}if(curMonth<0){curMonth=11;curYear--;}renderMonth();renderCal();}
 function renderMonth(){document.getElementById("mtitle").textContent=MONTHS[curMonth]+" "+curYear;}
 
-// ── Date helpers ──────────────────────────────────────────────
-function dateRange(startStr,endStr){
-  const dates=[];
-  const s=new Date(startStr+"T00:00:00");
-  const e=new Date((endStr||startStr)+"T00:00:00");
-  const cur=new Date(s);
-  while(cur<=e){
-    dates.push(cur.getFullYear()+"-"+pad(cur.getMonth()+1)+"-"+pad(cur.getDate()));
-    cur.setDate(cur.getDate()+1);
-  }
-  return dates;
+function dateInRange(ds, ev){
+  const s=ev.dateStart||ev.date||"";
+  const e=ev.dateEnd||s;
+  return ds>=s && ds<=e;
 }
 
 function pillColor(ev){
@@ -281,7 +326,6 @@ function pillColor(ev){
   return {bg:DEPT_BG[ev.dept]||"#eee",tc:DEPT_TC[ev.dept]||"#555"};
 }
 
-// ── Render calendar ───────────────────────────────────────────
 function renderCal(){
   const grid=document.getElementById("cal-grid");
   const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -290,58 +334,48 @@ function renderCal(){
   const dim=new Date(curYear,curMonth+1,0).getDate();
   const dipm=new Date(curYear,curMonth,0).getDate();
   const today=new Date();
-
   let cells=[];
   for(let i=0;i<first;i++) cells.push({day:dipm-first+1+i,cur:false});
   for(let i=1;i<=dim;i++) cells.push({day:i,cur:true});
   while(cells.length%7!==0) cells.push({day:cells.length-first-dim+1,cur:false});
-
   cells.forEach(c=>{
     const ds=`${curYear}-${pad(curMonth+1)}-${pad(c.day)}`;
     const isToday=c.cur&&today.getFullYear()===curYear&&today.getMonth()===curMonth&&today.getDate()===c.day;
     const numHtml=isToday?`<span class="today-b">${c.day}</span>`:c.day;
-
-    let evts=[];
-    if(c.cur){
-      evts=events.filter(ev=>{
-        const dates=dateRange(ev.dateStart,ev.dateEnd);
-        return dates.includes(ds);
-      });
-    }
+    const evts=c.cur?events.filter(ev=>dateInRange(ds,ev)):[];
     const show=evts.slice(0,2);
-    const pillsHtml=show.map(ev=>{
+    const pills=show.map(ev=>{
       const col=pillColor(ev);
       const isMulti=ev.dateEnd&&ev.dateEnd!==ev.dateStart;
-      const label=isMulti?`${ev.activity} (${ev.dateStart.slice(5)}→${ev.dateEnd.slice(5)})`:ev.activity;
+      const label=isMulti?`${ev.activity} (→${ev.dateEnd.slice(5)})`:ev.activity;
       return `<div class="epill" style="background:${col.bg};color:${col.tc}" onclick="openView('${ev.id}',event)">${label}</div>`;
     }).join("");
-    const moreHtml=evts.length>2?`<div class="more">+${evts.length-2} more</div>`:"";
+    const more=evts.length>2?`<div class="more">+${evts.length-2} more</div>`:"";
     const ca=c.cur?`onclick="openAdd('${ds}')"` :"";
-    html+=`<div class="dc${c.cur?"":" om"}" ${ca}><div class="dn">${numHtml}</div>${pillsHtml}${moreHtml}</div>`;
+    html+=`<div class="dc${c.cur?"":" om"}" ${ca}><div class="dn">${numHtml}</div>${pills}${more}</div>`;
   });
   grid.innerHTML=html;
 }
 
-// ── Modal helpers ─────────────────────────────────────────────
 function openModal(html){document.getElementById("modal-box").innerHTML=html;document.getElementById("modal-overlay").classList.add("open");}
 function closeModal(){document.getElementById("modal-overlay").classList.remove("open");}
 function overlayClick(e){if(e.target===document.getElementById("modal-overlay"))closeModal();}
 function subsOpts(loc,sel){return(LOCATIONS[loc]||[]).map(s=>`<option value="${s}"${s===sel?" selected":""}>${s}</option>`).join("");}
 function updateSubs(){document.getElementById("f-sub").innerHTML=subsOpts(document.getElementById("f-loc").value,"");}
+function syncEnd(){const s=document.getElementById("f-start").value;const e=document.getElementById("f-end");if(!e.value||e.value<s)e.value=s;}
 
-// ── Add event ─────────────────────────────────────────────────
 function openAdd(date){
   const t=new Date();
   const def=date||`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
-  const firstLoc=Object.keys(LOCATIONS)[0];
+  const fl=Object.keys(LOCATIONS)[0];
   openModal(`
     <h3>Add event</h3>
     <div class="slabel">When</div>
-    <div class="date-range-row">
-      <div class="fr"><label>Start date</label><input type="date" id="f-start" value="${def}" onchange="syncEndDate()"></div>
+    <div class="frow">
+      <div class="fr"><label>Start date</label><input type="date" id="f-start" value="${def}" onchange="syncEnd()"></div>
       <div class="fr"><label>End date <span style="font-weight:400;color:var(--text3)">(optional)</span></label><input type="date" id="f-end" value="${def}"></div>
     </div>
-    <div class="date-hint">For multi-day events, set an end date. Leave end = start for a single day.</div>
+    <div class="date-hint">Set the same date for a single-day event, or a later end date for multi-day.</div>
     <div class="slabel">Who &amp; what</div>
     <div class="frow">
       <div class="fr"><label>Submitted by</label><select id="f-dept">${DEPTS.map(d=>`<option>${d}</option>`).join("")}</select></div>
@@ -349,51 +383,49 @@ function openAdd(date){
     </div>
     <div class="slabel">Location</div>
     <div class="fr"><label>Location</label><select id="f-loc" onchange="updateSubs()">${Object.keys(LOCATIONS).map(l=>`<option>${l}</option>`).join("")}</select></div>
-    <div class="fr"><label>Sub-location</label><select id="f-sub">${subsOpts(firstLoc,"")}</select></div>
+    <div class="fr"><label>Sub-location</label><select id="f-sub">${subsOpts(fl,"")}</select></div>
     <div class="slabel">Details</div>
     <div class="fr"><label>Notes</label><textarea id="f-note" placeholder="Guest numbers, times, coordination needed..."></textarea></div>
     <div class="mbtns">
-      <div class="saving-msg" id="saving-add" style="display:none"><div class="spinner"></div> Saving to shared calendar...</div>
+      <div class="saving-msg" id="smsg" style="display:none"><div class="spinner"></div> Saving...</div>
       <button class="secondary" onclick="closeModal()">Cancel</button>
-      <button class="primary" id="btn-add" onclick="saveAdd()">Save event</button>
+      <button class="primary" id="sbtn" onclick="saveAdd()">Save event</button>
     </div>
   `);
 }
 
-function syncEndDate(){
-  const s=document.getElementById("f-start").value;
-  const e=document.getElementById("f-end");
-  if(!e.value||e.value<s) e.value=s;
-}
-
 async function saveAdd(){
-  const dateStart=document.getElementById("f-start").value;
-  const dateEnd=document.getElementById("f-end").value||dateStart;
-  if(!dateStart){alert("Please select a start date.");return;}
-  if(dateEnd<dateStart){alert("End date must be on or after start date.");return;}
-  setSaving("saving-add","btn-add",true);
+  const ds=document.getElementById("f-start").value;
+  const de=document.getElementById("f-end").value||ds;
+  if(!ds){alert("Please select a start date.");return;}
+  if(de<ds){alert("End date must be on or after start date.");return;}
+  setSaving("smsg","sbtn",true);
   try{
-    const data=await apiCall({action:"addEvent",dateStart,dateEnd,dept:document.getElementById("f-dept").value,activity:document.getElementById("f-act").value,location:document.getElementById("f-loc").value,sublocation:document.getElementById("f-sub").value,note:document.getElementById("f-note").value.trim()});
-    if(data.error) throw new Error(data.error);
-    closeModal(); await loadEvents();
+    const r=await gasCall({action:"addEvent",dateStart:ds,dateEnd:de,
+      dept:document.getElementById("f-dept").value,
+      activity:document.getElementById("f-act").value,
+      location:document.getElementById("f-loc").value,
+      sublocation:document.getElementById("f-sub").value,
+      note:document.getElementById("f-note").value.trim()});
+    if(r.error) throw new Error(r.error);
+    closeModal(); await loadEvents(true);
   }catch(err){
-    setSaving("saving-add","btn-add",false);
-    alert("Could not save. Error: "+err.message+"\n\nMake sure your Script URL is correct and redeployed.");
+    setSaving("smsg","sbtn",false);
+    alert("Could not save:\n"+err.message);
   }
 }
 
-// ── View event ────────────────────────────────────────────────
 function openView(id,e){
-  if(e) e.stopPropagation();
+  if(e)e.stopPropagation();
   const ev=events.find(x=>String(x.id)===String(id));
-  if(!ev) return;
+  if(!ev)return;
   const col=pillColor(ev);
-  const dateDisplay=ev.dateEnd&&ev.dateEnd!==ev.dateStart?`${ev.dateStart} → ${ev.dateEnd}`:ev.dateStart;
+  const dd=ev.dateEnd&&ev.dateEnd!==ev.dateStart?`${ev.dateStart} → ${ev.dateEnd}`:ev.dateStart;
   openModal(`
     <h3>Event details</h3>
     <div class="edet">
       <div class="et">${ev.activity}<span class="tbadge" style="background:${col.bg};color:${col.tc}">${ev.dept}</span></div>
-      <div class="em">${dateDisplay}<br>${ev.location} &mdash; ${ev.sublocation}</div>
+      <div class="em">${dd}<br>${ev.location} &mdash; ${ev.sublocation}</div>
       ${ev.note?`<div class="en">${ev.note}</div>`:""}
     </div>
     <div class="mbtns">
@@ -404,17 +436,16 @@ function openView(id,e){
   `);
 }
 
-// ── Edit event ────────────────────────────────────────────────
 function openEdit(id){
   const ev=events.find(x=>String(x.id)===String(id));
-  if(!ev) return;
-  const dateEnd=ev.dateEnd||ev.dateStart;
+  if(!ev)return;
+  const de=ev.dateEnd||ev.dateStart;
   openModal(`
     <h3>Edit event</h3>
     <div class="slabel">When</div>
-    <div class="date-range-row">
+    <div class="frow">
       <div class="fr"><label>Start date</label><input type="date" id="f-start" value="${ev.dateStart}"></div>
-      <div class="fr"><label>End date</label><input type="date" id="f-end" value="${dateEnd}"></div>
+      <div class="fr"><label>End date</label><input type="date" id="f-end" value="${de}"></div>
     </div>
     <div class="slabel">Who &amp; what</div>
     <div class="frow">
@@ -427,40 +458,44 @@ function openEdit(id){
     <div class="slabel">Details</div>
     <div class="fr"><label>Notes</label><textarea id="f-note">${ev.note||""}</textarea></div>
     <div class="mbtns">
-      <div class="saving-msg" id="saving-edit" style="display:none"><div class="spinner"></div> Saving...</div>
+      <div class="saving-msg" id="emsg" style="display:none"><div class="spinner"></div> Saving...</div>
       <button class="secondary" onclick="closeModal()">Cancel</button>
-      <button class="primary" id="btn-edit" onclick="saveEdit('${id}')">Save changes</button>
+      <button class="primary" id="ebtn" onclick="saveEdit('${id}')">Save changes</button>
     </div>
   `);
 }
 
 async function saveEdit(id){
-  const dateStart=document.getElementById("f-start").value;
-  const dateEnd=document.getElementById("f-end").value||dateStart;
-  if(dateEnd<dateStart){alert("End date must be on or after start date.");return;}
-  setSaving("saving-edit","btn-edit",true);
+  const ds=document.getElementById("f-start").value;
+  const de=document.getElementById("f-end").value||ds;
+  if(de<ds){alert("End date must be on or after start date.");return;}
+  setSaving("emsg","ebtn",true);
   try{
-    const data=await apiCall({action:"updateEvent",id,dateStart,dateEnd,dept:document.getElementById("f-dept").value,activity:document.getElementById("f-act").value,location:document.getElementById("f-loc").value,sublocation:document.getElementById("f-sub").value,note:document.getElementById("f-note").value.trim()});
-    if(data.error) throw new Error(data.error);
-    closeModal(); await loadEvents();
+    const r=await gasCall({action:"updateEvent",id,dateStart:ds,dateEnd:de,
+      dept:document.getElementById("f-dept").value,
+      activity:document.getElementById("f-act").value,
+      location:document.getElementById("f-loc").value,
+      sublocation:document.getElementById("f-sub").value,
+      note:document.getElementById("f-note").value.trim()});
+    if(r.error) throw new Error(r.error);
+    closeModal(); await loadEvents(true);
   }catch(err){
-    setSaving("saving-edit","btn-edit",false);
+    setSaving("emsg","ebtn",false);
     alert("Could not save: "+err.message);
   }
 }
 
-// ── Delete ────────────────────────────────────────────────────
 async function deleteEvent(id){
-  if(!confirm("Delete this event?")) return;
+  if(!confirm("Delete this event?"))return;
   try{
-    await apiCall({action:"deleteEvent",id});
-    closeModal(); await loadEvents();
+    await gasCall({action:"deleteEvent",id});
+    closeModal(); await loadEvents(true);
   }catch(err){alert("Could not delete: "+err.message);}
 }
 
-function setSaving(msgId,btnId,on){
-  document.getElementById(msgId).style.display=on?"flex":"none";
-  document.getElementById(btnId).disabled=on;
+function setSaving(mid,bid,on){
+  document.getElementById(mid).style.display=on?"flex":"none";
+  document.getElementById(bid).disabled=on;
 }
 
 init();
