@@ -136,6 +136,7 @@ button.danger:hover{background:#791F1F;}
     <button class="btn-change" onclick="showSetup()" title="Change script URL">⚙ Settings</button>
   </header>
 
+  <div id="debug-info" style="display:none;font-size:11px;color:#0F6E56;background:#E1F5EE;border-radius:6px;padding:6px 10px;margin-bottom:8px;word-break:break-all;"></div>
   <div class="status-bar">
     <div class="sdot" id="sdot"></div>
     <span id="stxt">Connecting...</span>
@@ -302,6 +303,10 @@ async function loadEvents(showSpinner){
     }));
     document.getElementById("error-banner").classList.add("hidden");
     setStatus("ok","Live — "+events.length+" event(s) — updated "+new Date().toLocaleTimeString());
+    console.log("EVENTS LOADED:",JSON.stringify(events));
+    // Show debug under status bar
+    const dbg=document.getElementById("debug-info");
+    if(dbg){dbg.textContent="Events received: "+events.map(e=>e.activity+"@"+e.dateStart+"~"+e.dateEnd).join(" | ");dbg.style.display="block";}
     renderCal();
   }catch(err){
     setStatus("err","Connection failed");
