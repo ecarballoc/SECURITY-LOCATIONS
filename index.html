@@ -17,34 +17,31 @@
   :root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.25);--text:#f0efe8;--text2:#b4b2a9;--text3:#888780;}
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;}
-.page{max-width:960px;margin:0 auto;padding:1.5rem 1rem 3rem;}
-
+.page{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem;}
 .banner{border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:12px;}
 .banner.yellow{background:#FFF8E6;border:1px solid #F0C040;}
 .banner.red{background:#FEF0F0;border:1px solid #F0A0A0;}
 .banner.hidden{display:none;}
 .banner h4{font-size:14px;font-weight:500;margin-bottom:4px;}
-.banner.yellow h4{color:#854F0B;} .banner.red h4{color:#7A1F1F;}
+.banner.yellow h4{color:#854F0B;}.banner.red h4{color:#7A1F1F;}
 .banner p{font-size:13px;line-height:1.5;}
-.banner.yellow p{color:#633806;} .banner.red p{color:#7A1F1F;}
+.banner.yellow p{color:#633806;}.banner.red p{color:#7A1F1F;}
 .banner input{width:100%;margin-top:8px;font-size:13px;padding:6px 9px;border:1px solid #F0C040;border-radius:var(--radius);background:white;color:#1a1a18;font-family:inherit;}
 .banner-btns{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
 .banner-btns button{font-size:13px;padding:5px 14px;border-radius:var(--radius);cursor:pointer;font-family:inherit;}
-.btn-connect{background:#185FA5;color:white;border:none;} .btn-connect:hover{background:#0C447C;}
-.btn-test{background:none;border:1px solid #185FA5;color:#185FA5;} .btn-test:hover{background:#e6f1fb;}
+.btn-connect{background:#185FA5;color:white;border:none;}.btn-connect:hover{background:#0C447C;}
+.btn-test{background:none;border:1px solid #185FA5;color:#185FA5;}.btn-test:hover{background:#e6f1fb;}
 .btn-dismiss{background:none;border:1px solid #ccc;color:#555;}
 .btn-change{background:none;border:1px solid #ccc;color:var(--text2);font-size:12px;padding:3px 10px;border-radius:var(--radius);cursor:pointer;margin-left:8px;}
 .btn-change:hover{background:var(--bg2);}
-
 .status-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);margin-bottom:10px;min-height:20px;}
 .sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#BA7517;}
-.sdot.green{background:#1D9E75;} .sdot.red{background:#E24B4A;}
-
+.sdot.green{background:#1D9E75;}.sdot.red{background:#E24B4A;}
 header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;}
 header h1{font-size:20px;font-weight:500;}
 .logo{width:32px;height:32px;border-radius:8px;background:#185FA5;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo svg{width:18px;height:18px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;}
-
+.ro-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#E1F5EE;color:#0F6E56;border:1px solid #9FE1CB;margin-left:4px;}
 .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;}
 .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px;}
 .mnav{display:flex;align-items:center;gap:10px;}
@@ -54,21 +51,20 @@ header h1{font-size:20px;font-weight:500;}
 .legend{display:flex;gap:10px;flex-wrap:wrap;}
 .leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text2);}
 .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
-
 .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
 .dh{background:var(--bg2);padding:6px 0;text-align:center;font-size:12px;font-weight:500;color:var(--text2);border-bottom:0.5px solid var(--border);}
-.dc{min-height:84px;padding:5px;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg);cursor:pointer;transition:background .1s;}
+.dc{min-height:110px;padding:5px;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg);cursor:pointer;transition:background .1s;vertical-align:top;}
 .dc:hover{background:var(--bg2);}
 .dc.om{background:var(--bg3);opacity:.4;cursor:default;pointer-events:none;}
 .dc:nth-child(7n){border-right:none;}
-.dn{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:3px;}
+.dn{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:4px;}
 .today-b{background:#185FA5;color:white;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;}
 .epill{font-size:10px;border-radius:4px;padding:2px 5px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;line-height:1.4;}
-.more{font-size:10px;color:var(--text3);padding:1px 3px;}
+.more-pill{font-size:10px;border-radius:4px;padding:2px 5px;margin-bottom:2px;cursor:pointer;background:var(--bg2);color:var(--text2);border:0.5px solid var(--border2);display:inline-block;}
+.more-pill:hover{background:var(--bg3);}
 .cal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap;gap:8px;}
 .refresh-btn{font-size:13px;color:var(--text2);background:none;border:0.5px solid var(--border2);border-radius:var(--radius);padding:6px 12px;cursor:pointer;}
 .refresh-btn:hover{background:var(--bg2);}
-
 button.primary{background:var(--blue);color:white;border:none;border-radius:var(--radius);padding:8px 18px;font-size:14px;cursor:pointer;font-family:inherit;}
 button.primary:hover{background:var(--blue-dk);}
 button.primary:disabled{background:#888;cursor:not-allowed;}
@@ -76,10 +72,9 @@ button.secondary{background:none;border:0.5px solid var(--border2);border-radius
 button.secondary:hover{background:var(--bg2);}
 button.danger{background:var(--red);color:white;border:none;border-radius:var(--radius);padding:7px 16px;font-size:14px;cursor:pointer;font-family:inherit;}
 button.danger:hover{background:#791F1F;}
-
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;}
 .modal-overlay.open{display:flex;}
-.mbox{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;width:430px;max-width:100%;}
+.mbox{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;width:460px;max-width:100%;}
 .mbox h3{font-size:16px;font-weight:500;margin-bottom:1.25rem;}
 .fr{margin-bottom:10px;}
 .fr label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px;}
@@ -89,7 +84,7 @@ button.danger:hover{background:#791F1F;}
 .slabel{font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin:14px 0 8px;border-top:0.5px solid var(--border);padding-top:12px;}
 .mbtns{display:flex;gap:8px;justify-content:flex-end;margin-top:1.25rem;flex-wrap:wrap;}
 .saving-msg{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px;margin-right:auto;}
-.edet{background:var(--bg2);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;}
+.edet{background:var(--bg2);border-radius:var(--radius);padding:12px 14px;margin-bottom:10px;}
 .edet .et{font-size:15px;font-weight:500;}
 .edet .em{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.6;}
 .edet .en{font-size:13px;color:var(--text);margin-top:8px;font-style:italic;border-top:0.5px solid var(--border);padding-top:8px;}
@@ -97,6 +92,7 @@ button.danger:hover{background:#791F1F;}
 .spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border2);border-top-color:var(--blue);border-radius:50%;animation:spin .6s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .date-hint{font-size:11px;color:var(--text3);margin-top:3px;}
+.day-events-list .edet{cursor:pointer;} .day-events-list .edet:hover{filter:brightness(0.97);}
 </style>
 </head>
 <body>
@@ -133,10 +129,9 @@ button.danger:hover{background:#791F1F;}
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
     </div>
     <h1>Island Activity Calendar</h1>
-    <button class="btn-change" onclick="showSetup()" title="Change script URL">⚙ Settings</button>
+    <button class="btn-change" onclick="showSetup()">⚙ Settings</button>
   </header>
 
-  <div id="debug-info" style="display:none;font-size:11px;color:#0F6E56;background:#E1F5EE;border-radius:6px;padding:6px 10px;margin-bottom:8px;word-break:break-all;"></div>
   <div class="status-bar">
     <div class="sdot" id="sdot"></div>
     <span id="stxt">Connecting...</span>
@@ -159,7 +154,7 @@ button.danger:hover{background:#791F1F;}
     <div id="cal-grid" class="cal-grid"></div>
     <div class="cal-footer">
       <button class="refresh-btn" onclick="loadEvents(true)">&#8635; Refresh</button>
-      <button class="primary" onclick="openAdd(null)">+ Add event</button>
+      <button class="primary" id="add-btn" onclick="openAdd(null)">+ Add event</button>
     </div>
   </div>
 </div>
@@ -183,6 +178,7 @@ const DEPT_BG  = {Security:"#FCEBEB",Locations:"#E1F5EE",Other:"#FAEEDA"};
 const DEPT_TC  = {Security:"#A32D2D",Locations:"#0F6E56",Other:"#854F0B"};
 const MONTHS   = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const URL_KEY  = "island_cal_url_v5";
+const READ_ONLY = (new URLSearchParams(window.location.search).get("view") === "readonly");
 const pad = n => String(n).padStart(2,"0");
 
 let events=[], curYear, curMonth, scriptUrl="", refreshTimer=null;
@@ -190,123 +186,87 @@ let events=[], curYear, curMonth, scriptUrl="", refreshTimer=null;
 function init(){
   const now=new Date(); curYear=now.getFullYear(); curMonth=now.getMonth();
   scriptUrl=localStorage.getItem(URL_KEY)||"";
-  if(scriptUrl) document.getElementById("setup-banner").classList.add("hidden");
+  if(READ_ONLY){
+    document.getElementById("setup-banner").classList.add("hidden");
+    document.getElementById("add-btn").style.display="none";
+    const h1=document.querySelector("header h1");
+    h1.insertAdjacentHTML("afterend","<span class='ro-badge'>View only</span>");
+    document.querySelector(".btn-change").style.display="none";
+  } else {
+    if(scriptUrl) document.getElementById("setup-banner").classList.add("hidden");
+  }
   renderMonth(); loadEvents(false);
   refreshTimer=setInterval(()=>loadEvents(false), 30000);
 }
 
 function saveUrl(){
   const v=document.getElementById("url-input").value.trim();
-  if(!v.startsWith("https://script.google.com")){
-    alert("Please paste a valid Google Apps Script URL starting with https://script.google.com");
-    return;
-  }
+  if(!v.startsWith("https://script.google.com")){alert("Please paste a valid Google Apps Script URL.");return;}
   scriptUrl=v; localStorage.setItem(URL_KEY,scriptUrl);
   document.getElementById("setup-banner").classList.add("hidden");
   document.getElementById("error-banner").classList.add("hidden");
   loadEvents(true);
 }
-
 function showSetup(){
-  const b=document.getElementById("setup-banner");
-  b.classList.remove("hidden");
+  document.getElementById("setup-banner").classList.remove("hidden");
   if(scriptUrl) document.getElementById("url-input").value=scriptUrl;
-  b.scrollIntoView({behavior:"smooth"});
+  document.getElementById("setup-banner").scrollIntoView({behavior:"smooth"});
 }
-
-function dismissBanner(){
-  document.getElementById("setup-banner").classList.add("hidden");
-}
+function dismissBanner(){document.getElementById("setup-banner").classList.add("hidden");}
 
 function setStatus(state,msg){
   document.getElementById("sdot").className="sdot "+(state==="ok"?"green":state==="err"?"red":"");
   document.getElementById("stxt").textContent=msg;
 }
 
-// ── JSONP call ─────────────────────────────────────────────────
-function gasCall(params, timeoutMs){
-  timeoutMs = timeoutMs||20000;
+function gasCall(params,timeoutMs){
+  timeoutMs=timeoutMs||20000;
   return new Promise((resolve,reject)=>{
     const cb="gc_"+Date.now()+"_"+Math.floor(Math.random()*99999);
     const u=new URL(scriptUrl);
     Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,String(v)));
     u.searchParams.set("callback",cb);
-
     let settled=false;
-    const timer=setTimeout(()=>{
-      if(settled)return; settled=true;
-      cleanup(); reject(new Error("Request timed out after "+timeoutMs/1000+"s"));
-    }, timeoutMs);
-
-    window[cb]=(data)=>{
-      if(settled)return; settled=true;
-      cleanup(); resolve(data);
-    };
-
-    function cleanup(){
-      clearTimeout(timer);
-      delete window[cb];
-      const s=document.getElementById("_gas_script");
-      if(s&&s.parentNode) s.parentNode.removeChild(s);
-    }
-
+    const timer=setTimeout(()=>{if(settled)return;settled=true;cleanup();reject(new Error("Request timed out"));},timeoutMs);
+    window[cb]=(data)=>{if(settled)return;settled=true;cleanup();resolve(data);};
+    function cleanup(){clearTimeout(timer);delete window[cb];const s=document.getElementById("_gas_s");if(s&&s.parentNode)s.parentNode.removeChild(s);}
     const script=document.createElement("script");
-    script.id="_gas_script";
-    script.onerror=(e)=>{
-      if(settled)return; settled=true;
-      cleanup();
-      reject(new Error("Could not reach script. Make sure you deployed as 'Anyone' and the URL is correct."));
-    };
+    script.id="_gas_s";
+    script.onerror=()=>{if(settled)return;settled=true;cleanup();reject(new Error("Could not reach script. Check URL and redeploy as Anyone."));};
     script.src=u.toString();
     document.head.appendChild(script);
   });
 }
 
-// ── Test connection button ─────────────────────────────────────
 async function testConnection(){
   const urlVal=document.getElementById("url-input").value.trim();
-  if(!urlVal.startsWith("https://script.google.com")){
-    alert("Enter a URL first.");return;
-  }
+  if(!urlVal.startsWith("https://script.google.com")){alert("Enter a URL first.");return;}
   const el=document.getElementById("test-result");
-  el.style.display="block";
-  el.style.color="var(--text3)";
-  el.textContent="Testing...";
-  const prev=scriptUrl;
-  scriptUrl=urlVal;
+  el.style.display="block"; el.style.color="var(--text3)"; el.textContent="Testing...";
+  const prev=scriptUrl; scriptUrl=urlVal;
   try{
     const data=await gasCall({action:"getEvents"},10000);
     if(data.error) throw new Error(data.error);
     el.style.color="#0F6E56";
     el.textContent="✓ Connected! Found "+data.events.length+" event(s). Click Connect to save.";
   }catch(err){
-    el.style.color="#A32D2D";
-    el.textContent="✗ Failed: "+err.message;
-    scriptUrl=prev;
+    el.style.color="#A32D2D"; el.textContent="✗ Failed: "+err.message; scriptUrl=prev;
   }
 }
 
-// ── Load events ────────────────────────────────────────────────
 async function loadEvents(showSpinner){
-  if(!scriptUrl){
-    setStatus("","Not connected — paste your Apps Script URL above");
-    renderCal(); return;
-  }
+  if(!scriptUrl){setStatus("","Not connected — paste your Apps Script URL above");renderCal();return;}
   if(showSpinner) setStatus("","Loading...");
   try{
     const data=await gasCall({action:"getEvents"});
     if(data.error) throw new Error(data.error);
     events=(data.events||[]).map(e=>({
       ...e, id:String(e.id),
-      dateStart: e.dateStart||e.date||"",
-      dateEnd:   e.dateEnd||(e.dateStart||e.date||"")
+      dateStart:e.dateStart||e.date||"",
+      dateEnd:e.dateEnd||(e.dateStart||e.date||"")
     }));
     document.getElementById("error-banner").classList.add("hidden");
     setStatus("ok","Live — "+events.length+" event(s) — updated "+new Date().toLocaleTimeString());
-    console.log("EVENTS LOADED:",JSON.stringify(events));
-    // Show debug under status bar
-    const dbg=document.getElementById("debug-info");
-    if(dbg){dbg.textContent="Events received: "+events.map(e=>e.activity+"@"+e.dateStart+"~"+e.dateEnd).join(" | ");dbg.style.display="block";}
     renderCal();
   }catch(err){
     setStatus("err","Connection failed");
@@ -320,15 +280,20 @@ async function loadEvents(showSpinner){
 function cm(d){curMonth+=d;if(curMonth>11){curMonth=0;curYear++;}if(curMonth<0){curMonth=11;curYear--;}renderMonth();renderCal();}
 function renderMonth(){document.getElementById("mtitle").textContent=MONTHS[curMonth]+" "+curYear;}
 
-function dateInRange(ds, ev){
+function dateInRange(ds,ev){
   const s=ev.dateStart||ev.date||"";
   const e=ev.dateEnd||s;
-  return ds>=s && ds<=e;
+  return ds>=s&&ds<=e;
 }
 
 function pillColor(ev){
   if(ev.activity==="Block") return {bg:"#EEEDFE",tc:"#3C3489"};
   return {bg:DEPT_BG[ev.dept]||"#eee",tc:DEPT_TC[ev.dept]||"#555"};
+}
+
+function pillLabel(ev){
+  // Show "Activity - Location" e.g. "Block - Monu Island"
+  return ev.activity+" - "+ev.location;
 }
 
 function renderCal(){
@@ -348,16 +313,23 @@ function renderCal(){
     const isToday=c.cur&&today.getFullYear()===curYear&&today.getMonth()===curMonth&&today.getDate()===c.day;
     const numHtml=isToday?`<span class="today-b">${c.day}</span>`:c.day;
     const evts=c.cur?events.filter(ev=>dateInRange(ds,ev)):[];
-    const show=evts.slice(0,2);
+    const show=evts.slice(0,3);
+    const remaining=evts.length-3;
     const pills=show.map(ev=>{
       const col=pillColor(ev);
-      const isMulti=ev.dateEnd&&ev.dateEnd!==ev.dateStart;
-      const label=isMulti?`${ev.activity} (→${ev.dateEnd.slice(5)})`:ev.activity;
-      return `<div class="epill" style="background:${col.bg};color:${col.tc}" onclick="openView('${ev.id}',event)">${label}</div>`;
+      return `<div class="epill" style="background:${col.bg};color:${col.tc}" onclick="openView('${ev.id}',event)">${pillLabel(ev)}</div>`;
     }).join("");
-    const more=evts.length>2?`<div class="more">+${evts.length-2} more</div>`:"";
-    const ca=c.cur?`onclick="openAdd('${ds}')"` :"";
-    html+=`<div class="dc${c.cur?"":" om"}" ${ca}><div class="dn">${numHtml}</div>${pills}${more}</div>`;
+    const morePill=remaining>0
+      ? `<div class="more-pill" onclick="openDayView('${ds}',event)">+${remaining} more</div>`
+      : "";
+    // clicking empty space on a day with events opens day view; on empty day opens add
+    let clickAttr="";
+    if(c.cur){
+      clickAttr=evts.length>0
+        ? `onclick="openDayView('${ds}',event)"`
+        : READ_ONLY ? "" : `onclick="openAdd('${ds}')"`;
+    }
+    html+=`<div class="dc${c.cur?"":" om"}" ${clickAttr}><div class="dn">${numHtml}</div>${pills}${morePill}</div>`;
   });
   grid.innerHTML=html;
 }
@@ -369,7 +341,35 @@ function subsOpts(loc,sel){return(LOCATIONS[loc]||[]).map(s=>`<option value="${s
 function updateSubs(){document.getElementById("f-sub").innerHTML=subsOpts(document.getElementById("f-loc").value,"");}
 function syncEnd(){const s=document.getElementById("f-start").value;const e=document.getElementById("f-end");if(!e.value||e.value<s)e.value=s;}
 
+// Day view — shows ALL events for a date
+function openDayView(ds,e){
+  if(e)e.stopPropagation();
+  const dayEvts=events.filter(ev=>dateInRange(ds,ev));
+  const d=new Date(ds+"T00:00:00");
+  const title=MONTHS[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+  const evtCards=dayEvts.map(ev=>{
+    const col=pillColor(ev);
+    const dd=ev.dateEnd&&ev.dateEnd!==ev.dateStart?`${ev.dateStart} → ${ev.dateEnd}`:ev.dateStart;
+    return `<div class="edet day-events-list" onclick="openView('${ev.id}',event)" style="cursor:pointer">
+      <div class="et">${ev.activity}<span class="tbadge" style="background:${col.bg};color:${col.tc}">${ev.dept}</span></div>
+      <div class="em">${dd}<br>${ev.location} &mdash; ${ev.sublocation}</div>
+      ${ev.note?`<div class="en">${ev.note}</div>`:""}
+    </div>`;
+  }).join("");
+  const addBtn=READ_ONLY?"":
+    `<button class="primary" onclick="closeModal();setTimeout(()=>openAdd('${ds}'),50)">+ Add event</button>`;
+  openModal(`
+    <h3>${title}</h3>
+    ${evtCards||`<div style="color:var(--text3);font-size:13px;padding:1rem 0;">No events on this day.</div>`}
+    <div class="mbtns">
+      <button class="secondary" onclick="closeModal()">Close</button>
+      ${addBtn}
+    </div>
+  `);
+}
+
 function openAdd(date){
+  if(READ_ONLY) return;
   const t=new Date();
   const def=date||`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
   const fl=Object.keys(LOCATIONS)[0];
@@ -380,7 +380,7 @@ function openAdd(date){
       <div class="fr"><label>Start date</label><input type="date" id="f-start" value="${def}" onchange="syncEnd()"></div>
       <div class="fr"><label>End date <span style="font-weight:400;color:var(--text3)">(optional)</span></label><input type="date" id="f-end" value="${def}"></div>
     </div>
-    <div class="date-hint">Set the same date for a single-day event, or a later end date for multi-day.</div>
+    <div class="date-hint">Same date = single day. Different end date = multi-day event.</div>
     <div class="slabel">Who &amp; what</div>
     <div class="frow">
       <div class="fr"><label>Submitted by</label><select id="f-dept">${DEPTS.map(d=>`<option>${d}</option>`).join("")}</select></div>
@@ -414,10 +414,7 @@ async function saveAdd(){
       note:document.getElementById("f-note").value.trim()});
     if(r.error) throw new Error(r.error);
     closeModal(); await loadEvents(true);
-  }catch(err){
-    setSaving("smsg","sbtn",false);
-    alert("Could not save:\n"+err.message);
-  }
+  }catch(err){setSaving("smsg","sbtn",false);alert("Could not save:\n"+err.message);}
 }
 
 function openView(id,e){
@@ -426,6 +423,9 @@ function openView(id,e){
   if(!ev)return;
   const col=pillColor(ev);
   const dd=ev.dateEnd&&ev.dateEnd!==ev.dateStart?`${ev.dateStart} → ${ev.dateEnd}`:ev.dateStart;
+  const editDelBtns=READ_ONLY?"":
+    `<button class="danger" onclick="deleteEvent('${id}')">Delete</button>
+     <button class="secondary" onclick="openEdit('${id}')">Edit</button>`;
   openModal(`
     <h3>Event details</h3>
     <div class="edet">
@@ -434,14 +434,14 @@ function openView(id,e){
       ${ev.note?`<div class="en">${ev.note}</div>`:""}
     </div>
     <div class="mbtns">
-      <button class="danger" onclick="deleteEvent('${id}')">Delete</button>
-      <button class="secondary" onclick="openEdit('${id}')">Edit</button>
+      ${editDelBtns}
       <button class="primary" onclick="closeModal()">Close</button>
     </div>
   `);
 }
 
 function openEdit(id){
+  if(READ_ONLY) return;
   const ev=events.find(x=>String(x.id)===String(id));
   if(!ev)return;
   const de=ev.dateEnd||ev.dateStart;
@@ -484,10 +484,7 @@ async function saveEdit(id){
       note:document.getElementById("f-note").value.trim()});
     if(r.error) throw new Error(r.error);
     closeModal(); await loadEvents(true);
-  }catch(err){
-    setSaving("emsg","ebtn",false);
-    alert("Could not save: "+err.message);
-  }
+  }catch(err){setSaving("emsg","ebtn",false);alert("Could not save: "+err.message);}
 }
 
 async function deleteEvent(id){
