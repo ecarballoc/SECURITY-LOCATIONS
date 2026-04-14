@@ -7,55 +7,33 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #ffffff;
-    --bg2: #f5f5f3;
-    --bg3: #efefec;
-    --border: rgba(0,0,0,0.12);
-    --border2: rgba(0,0,0,0.25);
-    --text: #1a1a18;
-    --text2: #5f5e5a;
-    --text3: #888780;
-    --radius: 8px;
-    --radius-lg: 12px;
-    --blue: #185FA5;
-    --blue-dark: #0C447C;
-    --red-bg: #A32D2D;
+    --bg: #ffffff; --bg2: #f5f5f3; --bg3: #efefec;
+    --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.25);
+    --text: #1a1a18; --text2: #5f5e5a; --text3: #888780;
+    --radius: 8px; --radius-lg: 12px;
+    --blue: #185FA5; --blue-dark: #0C447C; --red-bg: #A32D2D;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1c1c1a; --bg2: #252523; --bg3: #2e2e2b;
-      --border: rgba(255,255,255,0.12); --border2: rgba(255,255,255,0.25);
-      --text: #f0efe8; --text2: #b4b2a9; --text3: #888780;
-    }
+    :root { --bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.25);--text:#f0efe8;--text2:#b4b2a9;--text3:#888780; }
   }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
   .page { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-
-  /* Setup banner */
   .setup-banner { background: #FFF8E6; border: 1px solid #F0C040; border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: flex; align-items: flex-start; gap: 12px; }
   .setup-banner.hidden { display: none; }
-  .setup-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
   .setup-banner h4 { font-size: 14px; font-weight: 500; color: #854F0B; margin-bottom: 4px; }
   .setup-banner p { font-size: 13px; color: #633806; line-height: 1.5; }
   .setup-banner input { width: 100%; margin-top: 8px; font-size: 13px; padding: 6px 9px; border: 1px solid #F0C040; border-radius: var(--radius); background: white; color: #1a1a18; font-family: inherit; }
-  .setup-banner .setup-btns { display: flex; gap: 8px; margin-top: 8px; }
-  .setup-banner button { font-size: 13px; padding: 5px 14px; border-radius: var(--radius); cursor: pointer; font-family: inherit; }
+  .setup-btns { display: flex; gap: 8px; margin-top: 8px; }
+  .setup-btns button { font-size: 13px; padding: 5px 14px; border-radius: var(--radius); cursor: pointer; font-family: inherit; }
   .btn-save-url { background: #185FA5; color: white; border: none; }
-  .btn-save-url:hover { background: #0C447C; }
   .btn-dismiss { background: none; border: 1px solid #F0C040; color: #633806; }
-
-  /* Status bar */
   .status-bar { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text3); margin-bottom: 10px; min-height: 20px; }
   .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .status-dot.green { background: #1D9E75; }
-  .status-dot.amber { background: #BA7517; }
-  .status-dot.red { background: #E24B4A; }
-
+  .status-dot.green { background: #1D9E75; } .status-dot.amber { background: #BA7517; } .status-dot.red { background: #E24B4A; }
   header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
   header h1 { font-size: 20px; font-weight: 500; }
   .logo-mark { width: 32px; height: 32px; border-radius: 8px; background: #185FA5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .logo-mark svg { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; }
-
   .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
   .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
   .month-nav { display: flex; align-items: center; gap: 10px; }
@@ -65,7 +43,6 @@
   .legend { display: flex; gap: 12px; flex-wrap: wrap; }
   .leg-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text2); }
   .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-
   .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
   .dh { background: var(--bg2); padding: 6px 0; text-align: center; font-size: 12px; font-weight: 500; color: var(--text2); border-bottom: 0.5px solid var(--border); }
   .dc { min-height: 84px; padding: 5px; border-right: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); background: var(--bg); cursor: pointer; transition: background .1s; }
@@ -79,8 +56,6 @@
   .cal-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; flex-wrap: wrap; gap: 8px; }
   .refresh-btn { font-size: 13px; color: var(--text2); background: none; border: 0.5px solid var(--border2); border-radius: var(--radius); padding: 6px 12px; cursor: pointer; }
   .refresh-btn:hover { background: var(--bg2); }
-
-  /* Buttons */
   button.primary { background: var(--blue); color: white; border: none; border-radius: var(--radius); padding: 8px 18px; font-size: 14px; cursor: pointer; font-family: inherit; }
   button.primary:hover { background: var(--blue-dark); }
   button.primary:disabled { background: #888; cursor: not-allowed; }
@@ -88,8 +63,6 @@
   button.secondary:hover { background: var(--bg2); }
   button.danger { background: var(--red-bg); color: white; border: none; border-radius: var(--radius); padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
   button.danger:hover { background: #791F1F; }
-
-  /* Modal */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
   .modal-overlay.open { display: flex; }
   .modal-box { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; width: 410px; max-width: 100%; }
@@ -100,35 +73,28 @@
   .fr textarea { resize: vertical; min-height: 62px; }
   .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .sect-label { font-size: 11px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin: 14px 0 8px; border-top: 0.5px solid var(--border); padding-top: 12px; }
-  .modal-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1.25rem; }
+  .modal-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap; }
   .saving-msg { font-size: 12px; color: var(--text3); display: flex; align-items: center; gap: 6px; margin-right: auto; }
-
   .edet { background: var(--bg2); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 12px; }
   .edet .et { font-size: 15px; font-weight: 500; }
   .edet .em { font-size: 12px; color: var(--text2); margin-top: 4px; line-height: 1.6; }
   .edet .en { font-size: 13px; color: var(--text); margin-top: 8px; font-style: italic; border-top: 0.5px solid var(--border); padding-top: 8px; }
   .tbadge { display: inline-block; font-size: 11px; border-radius: 4px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
-
-  /* Spinner */
   .spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid var(--border2); border-top-color: var(--blue); border-radius: 50%; animation: spin .6s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Loading overlay */
-  .loading-state { text-align: center; padding: 3rem 0; color: var(--text2); font-size: 14px; }
 </style>
 </head>
 <body>
 <div class="page">
-
   <div class="setup-banner" id="setup-banner">
-    <div class="setup-icon">⚙️</div>
+    <div style="font-size:20px;flex-shrink:0;margin-top:1px">⚙️</div>
     <div style="flex:1">
       <h4>Connect your Google Sheet</h4>
       <p>Paste your Google Apps Script Web App URL below to enable real-time shared data across all departments.</p>
-      <input type="text" id="script-url-input" placeholder="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" />
+      <input type="text" id="script-url-input" placeholder="https://script.google.com/macros/s/YOUR_ID/exec" />
       <div class="setup-btns">
         <button class="btn-save-url" onclick="saveScriptUrl()">Connect</button>
-        <button class="btn-dismiss" onclick="dismissSetup()">Dismiss</button>
+        <button class="btn-dismiss" onclick="document.getElementById('setup-banner').classList.add('hidden')">Dismiss</button>
       </div>
     </div>
   </div>
@@ -140,9 +106,9 @@
     <h1>Island Activity Calendar</h1>
   </header>
 
-  <div class="status-bar" id="status-bar">
+  <div class="status-bar">
     <div class="status-dot amber" id="status-dot"></div>
-    <span id="status-text">Connecting to shared calendar...</span>
+    <span id="status-text">Connecting...</span>
   </div>
 
   <div class="card">
@@ -166,49 +132,44 @@
   </div>
 </div>
 
-<!-- Modal -->
 <div class="modal-overlay" id="modal-overlay" onclick="overlayClick(event)">
   <div class="modal-box" id="modal-box"></div>
 </div>
 
 <script>
 const LOCATIONS = {
-  "Mana Island": ["White Cross Lookout","Nabubu Beach","Circumnavigation","Mana Bay","Mana Jetty","Sunset Beach","Vitanive","Paradise Point Beach","Mana Sandbank"],
-  "Yadua Island": ["Yadua Island"],
-  "Monuriki Island": ["Savusavu","Nawai","Vabenau","Launatavuto","Rogua","TC1"],
-  "Monu Island": ["Vatule","Vilavilaniyalo","Qwaqwa","Kasa","Onedare","Liku","Muainalokoloko","Onena"],
-  "Tavua Island": ["Tavua Gardens","TC2","TC3"],
-  "Diving / Snorkeling": ["Yadua Pinacle","Seven Sisters","Mana Sandbank","Sunset Wall","Image","Supermarket","Dan's Wall","Tuanuku"]
+  "Mana Island":["White Cross Lookout","Nabubu Beach","Circumnavigation","Mana Bay","Mana Jetty","Sunset Beach","Vitanive","Paradise Point Beach","Mana Sandbank"],
+  "Yadua Island":["Yadua Island"],
+  "Monuriki Island":["Savusavu","Nawai","Vabenau","Launatavuto","Rogua","TC1"],
+  "Monu Island":["Vatule","Vilavilaniyalo","Qwaqwa","Kasa","Onedare","Liku","Muainalokoloko","Onena"],
+  "Tavua Island":["Tavua Gardens","TC2","TC3"],
+  "Diving / Snorkeling":["Yadua Pinacle","Seven Sisters","Mana Sandbank","Sunset Wall","Image","Supermarket","Dan's Wall","Tuanuku"]
 };
 const ACTIVITIES = ["Pic Nic","Overnight","Walk / Hike","Snorkeling","Scuba Diving","Aerial"];
 const DEPTS = ["Security","Locations","Other"];
-const DEPT_BG  = {Security:"#FCEBEB", Locations:"#E1F5EE", Other:"#FAEEDA"};
-const DEPT_TC  = {Security:"#A32D2D", Locations:"#0F6E56", Other:"#854F0B"};
-const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DEPT_BG  = {Security:"#FCEBEB",Locations:"#E1F5EE",Other:"#FAEEDA"};
+const DEPT_TC  = {Security:"#A32D2D",Locations:"#0F6E56",Other:"#854F0B"};
+const MONTHS   = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const URL_KEY  = "island_cal_script_url";
 const pad = n => String(n).padStart(2,"0");
-const URL_KEY = "island_cal_script_url";
 
-let events = [], curYear, curMonth, scriptUrl = "", autoRefreshTimer = null;
+let events = [], curYear, curMonth, scriptUrl = "", refreshTimer = null;
 
 function init() {
   const now = new Date();
   curYear = now.getFullYear();
   curMonth = now.getMonth();
   scriptUrl = localStorage.getItem(URL_KEY) || "";
-  if (scriptUrl) {
-    document.getElementById("setup-banner").classList.add("hidden");
-  } else {
-    document.getElementById("script-url-input").value = "";
-  }
+  if (scriptUrl) document.getElementById("setup-banner").classList.add("hidden");
   renderMonth();
   loadEvents();
-  startAutoRefresh();
+  refreshTimer = setInterval(loadEvents, 30000);
 }
 
 function saveScriptUrl() {
   const val = document.getElementById("script-url-input").value.trim();
   if (!val.startsWith("https://script.google.com")) {
-    alert("Please paste a valid Google Apps Script URL starting with https://script.google.com");
+    alert("Please paste a valid Google Apps Script URL.");
     return;
   }
   scriptUrl = val;
@@ -217,64 +178,67 @@ function saveScriptUrl() {
   loadEvents();
 }
 
-function dismissSetup() {
-  document.getElementById("setup-banner").classList.add("hidden");
-}
-
 function setStatus(state, msg) {
-  const dot = document.getElementById("status-dot");
-  const txt = document.getElementById("status-text");
-  dot.className = "status-dot " + state;
-  txt.textContent = msg;
+  document.getElementById("status-dot").className = "status-dot " + state;
+  document.getElementById("status-text").textContent = msg;
 }
 
-async function apiCall(params) {
-  if (!scriptUrl) {
-    setStatus("red", "No Google Sheet connected — events saved locally only");
-    throw new Error("no_url");
-  }
-  const url = new URL(scriptUrl);
-  Object.entries(params).forEach(([k,v]) => url.searchParams.set(k, v));
-  const res = await fetch(url.toString(), {redirect: "follow"});
-  const data = await res.json();
-  if (data.error) throw new Error(data.error);
-  return data;
+// JSONP call — avoids all CORS issues with Google Apps Script
+function jsonpCall(params) {
+  return new Promise((resolve, reject) => {
+    const cbName = "cb_" + Date.now() + "_" + Math.floor(Math.random()*10000);
+    const url = new URL(scriptUrl);
+    Object.entries(params).forEach(([k,v]) => url.searchParams.set(k, v));
+    url.searchParams.set("callback", cbName);
+
+    const script = document.createElement("script");
+    const timeout = setTimeout(() => {
+      cleanup();
+      reject(new Error("Request timed out"));
+    }, 15000);
+
+    window[cbName] = function(data) {
+      cleanup();
+      resolve(data);
+    };
+
+    function cleanup() {
+      clearTimeout(timeout);
+      delete window[cbName];
+      if (script.parentNode) script.parentNode.removeChild(script);
+    }
+
+    script.onerror = () => { cleanup(); reject(new Error("Script load failed")); };
+    script.src = url.toString();
+    document.head.appendChild(script);
+  });
 }
 
 async function loadEvents() {
   if (!scriptUrl) {
-    setStatus("amber", "Not connected — paste your script URL in the setup panel");
+    setStatus("amber", "Not connected — paste your script URL above");
     renderCal();
     return;
   }
   setStatus("amber", "Loading...");
   try {
-    const data = await apiCall({action: "getEvents"});
+    const data = await jsonpCall({action: "getEvents"});
+    if (data.error) throw new Error(data.error);
     events = (data.events || []).map(e => ({...e, id: String(e.id)}));
-    const now = new Date();
-    setStatus("green", "Live — last updated " + now.toLocaleTimeString());
+    setStatus("green", "Live — updated " + new Date().toLocaleTimeString());
     renderCal();
   } catch(err) {
-    if (err.message !== "no_url") {
-      setStatus("red", "Could not reach Google Sheet — check your URL");
-    }
+    setStatus("red", "Could not load events: " + err.message);
     renderCal();
   }
-}
-
-function startAutoRefresh() {
-  if (autoRefreshTimer) clearInterval(autoRefreshTimer);
-  autoRefreshTimer = setInterval(loadEvents, 30000);
 }
 
 function cm(d) {
   curMonth += d;
   if (curMonth > 11) { curMonth = 0; curYear++; }
   if (curMonth < 0)  { curMonth = 11; curYear--; }
-  renderMonth();
-  renderCal();
+  renderMonth(); renderCal();
 }
-
 function renderMonth() {
   document.getElementById("month-title").textContent = MONTHS[curMonth] + " " + curYear;
 }
@@ -283,25 +247,24 @@ function renderCal() {
   const grid = document.getElementById("cal-grid");
   const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   let html = days.map(d => `<div class="dh">${d}</div>`).join("");
-  const first = new Date(curYear, curMonth, 1).getDay();
-  const dim   = new Date(curYear, curMonth+1, 0).getDate();
-  const dipm  = new Date(curYear, curMonth, 0).getDate();
+  const first = new Date(curYear,curMonth,1).getDay();
+  const dim   = new Date(curYear,curMonth+1,0).getDate();
+  const dipm  = new Date(curYear,curMonth,0).getDate();
   const today = new Date();
   let cells = [];
-  for (let i = 0; i < first; i++) cells.push({day: dipm-first+1+i, cur: false});
-  for (let i = 1; i <= dim; i++)  cells.push({day: i, cur: true});
-  while (cells.length % 7 !== 0)  cells.push({day: cells.length-first-dim+1, cur: false});
-
+  for (let i=0;i<first;i++) cells.push({day:dipm-first+1+i,cur:false});
+  for (let i=1;i<=dim;i++)  cells.push({day:i,cur:true});
+  while (cells.length%7!==0) cells.push({day:cells.length-first-dim+1,cur:false});
   cells.forEach(c => {
     const ds = `${curYear}-${pad(curMonth+1)}-${pad(c.day)}`;
     const isToday = c.cur && today.getFullYear()===curYear && today.getMonth()===curMonth && today.getDate()===c.day;
-    const evts = c.cur ? events.filter(e => e.date === ds) : [];
-    const show = evts.slice(0, 2);
+    const evts = c.cur ? events.filter(e => e.date===ds) : [];
+    const show = evts.slice(0,2);
     const numHtml = isToday ? `<span class="today-b">${c.day}</span>` : c.day;
     const pillsHtml = show.map(ev =>
       `<div class="epill" style="background:${DEPT_BG[ev.dept]||'#eee'};color:${DEPT_TC[ev.dept]||'#555'}" onclick="openView('${ev.id}',event)">${ev.activity}</div>`
     ).join("");
-    const moreHtml = evts.length > 2 ? `<div class="more">+${evts.length-2} more</div>` : "";
+    const moreHtml = evts.length>2 ? `<div class="more">+${evts.length-2} more</div>` : "";
     const ca = c.cur ? `onclick="openAdd('${ds}')"` : "";
     html += `<div class="dc${c.cur?"":" om"}" ${ca}><div class="dn">${numHtml}</div>${pillsHtml}${moreHtml}</div>`;
   });
@@ -312,17 +275,11 @@ function openModal(html) {
   document.getElementById("modal-box").innerHTML = html;
   document.getElementById("modal-overlay").classList.add("open");
 }
-function closeModal() {
-  document.getElementById("modal-overlay").classList.remove("open");
-}
-function overlayClick(e) {
-  if (e.target === document.getElementById("modal-overlay")) closeModal();
-}
+function closeModal() { document.getElementById("modal-overlay").classList.remove("open"); }
+function overlayClick(e) { if(e.target===document.getElementById("modal-overlay")) closeModal(); }
 
 function subsOptions(selLoc, selSub) {
-  return (LOCATIONS[selLoc]||[]).map(s =>
-    `<option value="${s}"${s===selSub?" selected":""}>${s}</option>`
-  ).join("");
+  return (LOCATIONS[selLoc]||[]).map(s=>`<option value="${s}"${s===selSub?" selected":""}>${s}</option>`).join("");
 }
 
 function openAdd(date) {
@@ -348,47 +305,34 @@ function openAdd(date) {
     </div>
   `);
 }
-
 function updateSubs() {
-  const loc = document.getElementById("f-loc").value;
-  document.getElementById("f-sub").innerHTML = subsOptions(loc, "");
+  document.getElementById("f-sub").innerHTML = subsOptions(document.getElementById("f-loc").value,"");
 }
 
 async function saveAdd() {
   const date = document.getElementById("f-date").value;
   if (!date) { alert("Please select a date."); return; }
-  const params = {
-    action: "addEvent",
-    date,
-    dept:        document.getElementById("f-dept").value,
-    activity:    document.getElementById("f-act").value,
-    location:    document.getElementById("f-loc").value,
-    sublocation: document.getElementById("f-sub").value,
-    note:        document.getElementById("f-note").value.trim()
-  };
-  document.getElementById("saving-add").style.display = "flex";
-  document.getElementById("btn-add").disabled = true;
+  setSaving("saving-add","btn-add",true);
   try {
-    await apiCall(params);
-    closeModal();
-    await loadEvents();
+    const data = await jsonpCall({action:"addEvent",date,dept:document.getElementById("f-dept").value,activity:document.getElementById("f-act").value,location:document.getElementById("f-loc").value,sublocation:document.getElementById("f-sub").value,note:document.getElementById("f-note").value.trim()});
+    if (data.error) throw new Error(data.error);
+    closeModal(); await loadEvents();
   } catch(err) {
-    document.getElementById("saving-add").style.display = "none";
-    document.getElementById("btn-add").disabled = false;
-    alert("Could not save — check your connection and try again.");
+    setSaving("saving-add","btn-add",false);
+    alert("Could not save: " + err.message);
   }
 }
 
 function openView(id, e) {
-  if (e) e.stopPropagation();
-  const ev = events.find(x => String(x.id) === String(id));
-  if (!ev) return;
+  if(e) e.stopPropagation();
+  const ev = events.find(x=>String(x.id)===String(id));
+  if(!ev) return;
   openModal(`
     <h3>Event details</h3>
     <div class="edet">
       <div class="et">${ev.activity}<span class="tbadge" style="background:${DEPT_BG[ev.dept]||'#eee'};color:${DEPT_TC[ev.dept]||'#555'}">${ev.dept}</span></div>
       <div class="em">${ev.date}<br>${ev.location} &mdash; ${ev.sublocation}</div>
-      ${ev.note ? `<div class="en">${ev.note}</div>` : ""}
+      ${ev.note?`<div class="en">${ev.note}</div>`:""}
     </div>
     <div class="modal-btns">
       <button class="danger" onclick="deleteEvent('${id}')">Delete</button>
@@ -399,8 +343,8 @@ function openView(id, e) {
 }
 
 function openEdit(id) {
-  const ev = events.find(x => String(x.id) === String(id));
-  if (!ev) return;
+  const ev = events.find(x=>String(x.id)===String(id));
+  if(!ev) return;
   openModal(`
     <h3>Edit event</h3>
     <div class="fr"><label>Date</label><input type="date" id="f-date" value="${ev.date}"></div>
@@ -410,7 +354,7 @@ function openEdit(id) {
     </div>
     <div class="sect-label">Location</div>
     <div class="fr"><label>Location</label><select id="f-loc" onchange="updateSubs()">${Object.keys(LOCATIONS).map(l=>`<option${l===ev.location?" selected":""}>${l}</option>`).join("")}</select></div>
-    <div class="fr"><label>Sub-location</label><select id="f-sub">${subsOptions(ev.location, ev.sublocation)}</select></div>
+    <div class="fr"><label>Sub-location</label><select id="f-sub">${subsOptions(ev.location,ev.sublocation)}</select></div>
     <div class="sect-label">Details</div>
     <div class="fr"><label>Notes</label><textarea id="f-note">${ev.note||""}</textarea></div>
     <div class="modal-btns">
@@ -422,38 +366,28 @@ function openEdit(id) {
 }
 
 async function saveEdit(id) {
-  const params = {
-    action: "updateEvent",
-    id,
-    date:        document.getElementById("f-date").value,
-    dept:        document.getElementById("f-dept").value,
-    activity:    document.getElementById("f-act").value,
-    location:    document.getElementById("f-loc").value,
-    sublocation: document.getElementById("f-sub").value,
-    note:        document.getElementById("f-note").value.trim()
-  };
-  document.getElementById("saving-edit").style.display = "flex";
-  document.getElementById("btn-edit").disabled = true;
+  setSaving("saving-edit","btn-edit",true);
   try {
-    await apiCall(params);
-    closeModal();
-    await loadEvents();
+    const data = await jsonpCall({action:"updateEvent",id,date:document.getElementById("f-date").value,dept:document.getElementById("f-dept").value,activity:document.getElementById("f-act").value,location:document.getElementById("f-loc").value,sublocation:document.getElementById("f-sub").value,note:document.getElementById("f-note").value.trim()});
+    if(data.error) throw new Error(data.error);
+    closeModal(); await loadEvents();
   } catch(err) {
-    document.getElementById("saving-edit").style.display = "none";
-    document.getElementById("btn-edit").disabled = false;
-    alert("Could not save — check your connection and try again.");
+    setSaving("saving-edit","btn-edit",false);
+    alert("Could not save: " + err.message);
   }
 }
 
 async function deleteEvent(id) {
-  if (!confirm("Delete this event?")) return;
+  if(!confirm("Delete this event?")) return;
   try {
-    await apiCall({action: "deleteEvent", id});
-    closeModal();
-    await loadEvents();
-  } catch(err) {
-    alert("Could not delete — check your connection.");
-  }
+    await jsonpCall({action:"deleteEvent",id});
+    closeModal(); await loadEvents();
+  } catch(err) { alert("Could not delete: " + err.message); }
+}
+
+function setSaving(msgId, btnId, on) {
+  document.getElementById(msgId).style.display = on ? "flex" : "none";
+  document.getElementById(btnId).disabled = on;
 }
 
 init();
