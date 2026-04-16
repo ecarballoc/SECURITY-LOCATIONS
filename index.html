@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Island Activity Calendar</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg:#ffffff; --bg2:#f5f5f3; --bg3:#efefec;
-  --border:rgba(0,0,0,0.12); --border2:rgba(0,0,0,0.25);
-  --text:#1a1a18; --text2:#5f5e5a; --text3:#888780;
-  --radius:8px; --radius-lg:12px;
-  --blue:#185FA5; --blue-dk:#0C447C; --red:#A32D2D;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f3;--bg3:#efefec;
+  --border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.25);
+  --text:#1a1a18;--text2:#5f5e5a;--text3:#888780;
+  --radius:8px;--radius-lg:12px;
+  --blue:#185FA5;--blue-dk:#0C447C;--red:#A32D2D;
 }
-@media (prefers-color-scheme:dark){
+@media(prefers-color-scheme:dark){
   :root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.25);--text:#f0efe8;--text2:#b4b2a9;--text3:#888780;}
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;}
-.page{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem;}
+.page{max-width:1280px;margin:0 auto;padding:1.5rem 1rem 3rem;}
+
 .banner{border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:12px;}
 .banner.yellow{background:#FFF8E6;border:1px solid #F0C040;}
 .banner.red{background:#FEF0F0;border:1px solid #F0A0A0;}
@@ -34,14 +35,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .btn-dismiss{background:none;border:1px solid #ccc;color:#555;}
 .btn-change{background:none;border:1px solid #ccc;color:var(--text2);font-size:12px;padding:3px 10px;border-radius:var(--radius);cursor:pointer;margin-left:8px;}
 .btn-change:hover{background:var(--bg2);}
-.status-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);margin-bottom:10px;min-height:20px;}
-.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#BA7517;}
-.sdot.green{background:#1D9E75;}.sdot.red{background:#E24B4A;}
-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;}
+
+header{display:flex;align-items:center;gap:12px;margin-bottom:1rem;}
 header h1{font-size:20px;font-weight:500;}
 .logo{width:32px;height:32px;border-radius:8px;background:#185FA5;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo svg{width:18px;height:18px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;}
-.ro-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#E1F5EE;color:#0F6E56;border:1px solid #9FE1CB;margin-left:4px;}
+.ro-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#E1F5EE;color:#0F6E56;border:1px solid #9FE1CB;margin-left:4px;vertical-align:middle;}
+
+.status-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);margin-bottom:1rem;min-height:20px;}
+.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#BA7517;}
+.sdot.green{background:#1D9E75;}.sdot.red{background:#E24B4A;}
+
+.main-layout{display:grid;grid-template-columns:260px 1fr;gap:1rem;align-items:start;}
+@media(max-width:720px){.main-layout{grid-template-columns:1fr;}}
+
+/* ── Daily Brief Sidebar ── */
+.sidebar{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem;position:sticky;top:1rem;}
+.sb-dayname{font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px;}
+.sb-date{font-size:16px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.sb-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.sb-brief-label{font-size:11px;color:var(--text3);}
+.sb-count{display:inline-flex;align-items:center;justify-content:center;background:#185FA5;color:white;border-radius:20px;font-size:10px;font-weight:500;padding:2px 8px;}
+.sb-divider{height:0.5px;background:var(--border);margin-bottom:10px;}
+.brief-empty{font-size:13px;color:var(--text3);font-style:italic;padding:6px 0;}
+.brief-item{padding:10px 0;border-bottom:0.5px solid var(--border);cursor:pointer;}
+.brief-item:last-child{border-bottom:none;padding-bottom:0;}
+.brief-item:hover .brief-act{text-decoration:underline;}
+.brief-top{display:flex;align-items:center;gap:6px;margin-bottom:3px;}
+.brief-badge{font-size:10px;border-radius:3px;padding:1px 5px;flex-shrink:0;}
+.brief-act{font-size:13px;font-weight:500;color:var(--text);}
+.brief-loc{font-size:12px;color:var(--text2);margin-bottom:1px;}
+.brief-subloc{font-size:11px;color:var(--text3);}
+.brief-multiday{font-size:10px;color:#0C447C;background:#E6F1FB;border-radius:3px;padding:1px 6px;display:inline-block;margin-top:4px;}
+@media(prefers-color-scheme:dark){.brief-multiday{color:#85B7EB;background:#0C447C;}}
+.brief-note{font-size:11px;color:var(--text2);font-style:italic;margin-top:5px;line-height:1.4;padding:5px 8px;background:var(--bg2);border-radius:5px;}
+
+/* ── Calendar ── */
 .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;}
 .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px;}
 .mnav{display:flex;align-items:center;gap:10px;}
@@ -56,6 +85,7 @@ header h1{font-size:20px;font-weight:500;}
 .dc{min-height:110px;padding:5px;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg);cursor:pointer;transition:background .1s;vertical-align:top;}
 .dc:hover{background:var(--bg2);}
 .dc.om{background:var(--bg3);opacity:.4;cursor:default;pointer-events:none;}
+.dc.today-cell{background:rgba(24,95,165,0.04);}
 .dc:nth-child(7n){border-right:none;}
 .dn{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:4px;}
 .today-b{background:#185FA5;color:white;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;}
@@ -65,6 +95,7 @@ header h1{font-size:20px;font-weight:500;}
 .cal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap;gap:8px;}
 .refresh-btn{font-size:13px;color:var(--text2);background:none;border:0.5px solid var(--border2);border-radius:var(--radius);padding:6px 12px;cursor:pointer;}
 .refresh-btn:hover{background:var(--bg2);}
+
 button.primary{background:var(--blue);color:white;border:none;border-radius:var(--radius);padding:8px 18px;font-size:14px;cursor:pointer;font-family:inherit;}
 button.primary:hover{background:var(--blue-dk);}
 button.primary:disabled{background:#888;cursor:not-allowed;}
@@ -72,6 +103,7 @@ button.secondary{background:none;border:0.5px solid var(--border2);border-radius
 button.secondary:hover{background:var(--bg2);}
 button.danger{background:var(--red);color:white;border:none;border-radius:var(--radius);padding:7px 16px;font-size:14px;cursor:pointer;font-family:inherit;}
 button.danger:hover{background:#791F1F;}
+
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;}
 .modal-overlay.open{display:flex;}
 .mbox{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;width:460px;max-width:100%;}
@@ -92,7 +124,7 @@ button.danger:hover{background:#791F1F;}
 .spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border2);border-top-color:var(--blue);border-radius:50%;animation:spin .6s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .date-hint{font-size:11px;color:var(--text3);margin-top:3px;}
-.day-events-list .edet{cursor:pointer;} .day-events-list .edet:hover{filter:brightness(0.97);}
+.day-events-list .edet{cursor:pointer;}.day-events-list .edet:hover{filter:brightness(0.97);}
 </style>
 </head>
 <body>
@@ -103,7 +135,7 @@ button.danger:hover{background:#791F1F;}
     <div style="flex:1;">
       <h4>Connect your Google Sheet</h4>
       <p>Paste your Google Apps Script Web App URL to enable real-time shared data for all departments.</p>
-      <input type="text" id="url-input" placeholder="https://script.google.com/macros/s/YOUR_ID/exec" />
+      <input type="text" id="url-input" placeholder="https://script.google.com/macros/s/YOUR_ID/exec"/>
       <div class="banner-btns">
         <button class="btn-connect" onclick="saveUrl()">Connect</button>
         <button class="btn-test" onclick="testConnection()">Test connection</button>
@@ -129,7 +161,7 @@ button.danger:hover{background:#791F1F;}
       <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
     </div>
     <h1>Island Activity Calendar</h1>
-    <button class="btn-change" onclick="showSetup()">⚙ Settings</button>
+    <button class="btn-change" id="settings-btn" onclick="showSetup()">⚙ Settings</button>
   </header>
 
   <div class="status-bar">
@@ -137,25 +169,42 @@ button.danger:hover{background:#791F1F;}
     <span id="stxt">Connecting...</span>
   </div>
 
-  <div class="card">
-    <div class="top-bar">
-      <div class="mnav">
-        <button onclick="cm(-1)">&#8249;</button>
-        <div class="mtitle" id="mtitle"></div>
-        <button onclick="cm(1)">&#8250;</button>
+  <div class="main-layout">
+
+    <!-- Daily Brief Sidebar -->
+    <div class="sidebar">
+      <div class="sb-dayname" id="brief-dayname"></div>
+      <div class="sb-date" id="brief-date"></div>
+      <div class="sb-header-row">
+        <span class="sb-brief-label">Today's brief</span>
+        <span class="sb-count" id="brief-count">0</span>
       </div>
-      <div class="legend">
-        <div class="leg"><div class="dot" style="background:#E24B4A;"></div>Security</div>
-        <div class="leg"><div class="dot" style="background:#1D9E75;"></div>Locations</div>
-        <div class="leg"><div class="dot" style="background:#BA7517;"></div>Other</div>
-        <div class="leg"><div class="dot" style="background:#534AB7;"></div>Block</div>
+      <div class="sb-divider"></div>
+      <div id="brief-body"></div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="card">
+      <div class="top-bar">
+        <div class="mnav">
+          <button onclick="cm(-1)">&#8249;</button>
+          <div class="mtitle" id="mtitle"></div>
+          <button onclick="cm(1)">&#8250;</button>
+        </div>
+        <div class="legend">
+          <div class="leg"><div class="dot" style="background:#E24B4A;"></div>Security</div>
+          <div class="leg"><div class="dot" style="background:#1D9E75;"></div>Locations</div>
+          <div class="leg"><div class="dot" style="background:#BA7517;"></div>Other</div>
+          <div class="leg"><div class="dot" style="background:#534AB7;"></div>Block</div>
+        </div>
+      </div>
+      <div id="cal-grid" class="cal-grid"></div>
+      <div class="cal-footer">
+        <button class="refresh-btn" onclick="loadEvents(true)">&#8635; Refresh</button>
+        <button class="primary" id="add-btn" onclick="openAdd(null)">+ Add event</button>
       </div>
     </div>
-    <div id="cal-grid" class="cal-grid"></div>
-    <div class="cal-footer">
-      <button class="refresh-btn" onclick="loadEvents(true)">&#8635; Refresh</button>
-      <button class="primary" id="add-btn" onclick="openAdd(null)">+ Add event</button>
-    </div>
+
   </div>
 </div>
 
@@ -164,7 +213,7 @@ button.danger:hover{background:#791F1F;}
 </div>
 
 <script>
-const LOCATIONS = {
+const LOCATIONS={
   "Mana Island":["White Cross Lookout","Nabubu Beach","Circumnavigation","Mana Bay","Mana Jetty","Sunset Beach","Vitanive","Paradise Point Beach","Mana Sandbank"],
   "Yadua Island":["Yadua Island"],
   "Monuriki Island":["Savusavu","Nawai","Vabenau","Launatavuto","Rogua","TC1"],
@@ -172,37 +221,39 @@ const LOCATIONS = {
   "Tavua Island":["Tavua Gardens","TC2","TC3"],
   "Diving / Snorkeling":["Yadua Pinacle","Seven Sisters","Mana Sandbank","Sunset Wall","Image","Supermarket","Dan's Wall","Tuanuku"]
 };
-const ACTIVITIES = ["Pic Nic","Overnight","Walk / Hike","Snorkeling","Scuba Diving","Aerial","Block"];
-const DEPTS = ["Security","Locations","Other"];
-const DEPT_BG  = {Security:"#FCEBEB",Locations:"#E1F5EE",Other:"#FAEEDA"};
-const DEPT_TC  = {Security:"#A32D2D",Locations:"#0F6E56",Other:"#854F0B"};
-const MONTHS   = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const URL_KEY  = "island_cal_url_v5";
-const READ_ONLY = (new URLSearchParams(window.location.search).get("view") === "readonly");
-const pad = n => String(n).padStart(2,"0");
+const ACTIVITIES=["Pic Nic","Overnight","Walk / Hike","Snorkeling","Scuba Diving","Aerial","Block"];
+const DEPTS=["Security","Locations","Other"];
+const DEPT_BG={Security:"#FCEBEB",Locations:"#E1F5EE",Other:"#FAEEDA"};
+const DEPT_TC={Security:"#A32D2D",Locations:"#0F6E56",Other:"#854F0B"};
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const URL_KEY="island_cal_url_v5";
+const READ_ONLY=(new URLSearchParams(window.location.search).get("view")==="readonly");
+const pad=n=>String(n).padStart(2,"0");
 
-let events=[], curYear, curMonth, scriptUrl="", refreshTimer=null;
+let events=[],curYear,curMonth,scriptUrl="";
 
 function init(){
-  const now=new Date(); curYear=now.getFullYear(); curMonth=now.getMonth();
+  const now=new Date();curYear=now.getFullYear();curMonth=now.getMonth();
   scriptUrl=localStorage.getItem(URL_KEY)||"";
   if(READ_ONLY){
     document.getElementById("setup-banner").classList.add("hidden");
     document.getElementById("add-btn").style.display="none";
-    const h1=document.querySelector("header h1");
-    h1.insertAdjacentHTML("afterend","<span class='ro-badge'>View only</span>");
-    document.querySelector(".btn-change").style.display="none";
+    document.querySelector("header h1").insertAdjacentHTML("afterend","<span class='ro-badge'>View only</span>");
+    document.getElementById("settings-btn").style.display="none";
   } else {
     if(scriptUrl) document.getElementById("setup-banner").classList.add("hidden");
   }
-  renderMonth(); loadEvents(false);
-  refreshTimer=setInterval(()=>loadEvents(false), 30000);
+  renderMonth();
+  renderBrief();
+  loadEvents(false);
+  setInterval(()=>loadEvents(false),30000);
 }
 
 function saveUrl(){
   const v=document.getElementById("url-input").value.trim();
   if(!v.startsWith("https://script.google.com")){alert("Please paste a valid Google Apps Script URL.");return;}
-  scriptUrl=v; localStorage.setItem(URL_KEY,scriptUrl);
+  scriptUrl=v;localStorage.setItem(URL_KEY,scriptUrl);
   document.getElementById("setup-banner").classList.add("hidden");
   document.getElementById("error-banner").classList.add("hidden");
   loadEvents(true);
@@ -219,82 +270,102 @@ function setStatus(state,msg){
   document.getElementById("stxt").textContent=msg;
 }
 
-function gasCall(params,timeoutMs){
-  timeoutMs=timeoutMs||20000;
+function gasCall(params,ms){
+  ms=ms||20000;
   return new Promise((resolve,reject)=>{
     const cb="gc_"+Date.now()+"_"+Math.floor(Math.random()*99999);
     const u=new URL(scriptUrl);
     Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,String(v)));
     u.searchParams.set("callback",cb);
-    let settled=false;
-    const timer=setTimeout(()=>{if(settled)return;settled=true;cleanup();reject(new Error("Request timed out"));},timeoutMs);
-    window[cb]=(data)=>{if(settled)return;settled=true;cleanup();resolve(data);};
-    function cleanup(){clearTimeout(timer);delete window[cb];const s=document.getElementById("_gas_s");if(s&&s.parentNode)s.parentNode.removeChild(s);}
-    const script=document.createElement("script");
-    script.id="_gas_s";
-    script.onerror=()=>{if(settled)return;settled=true;cleanup();reject(new Error("Could not reach script. Check URL and redeploy as Anyone."));};
-    script.src=u.toString();
-    document.head.appendChild(script);
+    let done=false;
+    const t=setTimeout(()=>{if(done)return;done=true;clean();reject(new Error("Request timed out"));},ms);
+    window[cb]=(d)=>{if(done)return;done=true;clean();resolve(d);};
+    function clean(){clearTimeout(t);delete window[cb];const s=document.getElementById("_gs");if(s&&s.parentNode)s.parentNode.removeChild(s);}
+    const s=document.createElement("script");
+    s.id="_gs";
+    s.onerror=()=>{if(done)return;done=true;clean();reject(new Error("Could not reach script. Check URL and redeploy as Anyone."));};
+    s.src=u.toString();
+    document.head.appendChild(s);
   });
 }
 
 async function testConnection(){
-  const urlVal=document.getElementById("url-input").value.trim();
-  if(!urlVal.startsWith("https://script.google.com")){alert("Enter a URL first.");return;}
+  const v=document.getElementById("url-input").value.trim();
+  if(!v.startsWith("https://script.google.com")){alert("Enter a URL first.");return;}
   const el=document.getElementById("test-result");
-  el.style.display="block"; el.style.color="var(--text3)"; el.textContent="Testing...";
-  const prev=scriptUrl; scriptUrl=urlVal;
+  el.style.display="block";el.style.color="var(--text3)";el.textContent="Testing...";
+  const prev=scriptUrl;scriptUrl=v;
   try{
-    const data=await gasCall({action:"getEvents"},10000);
-    if(data.error) throw new Error(data.error);
+    const d=await gasCall({action:"getEvents"},10000);
+    if(d.error)throw new Error(d.error);
     el.style.color="#0F6E56";
-    el.textContent="✓ Connected! Found "+data.events.length+" event(s). Click Connect to save.";
+    el.textContent="✓ Connected! Found "+d.events.length+" event(s). Click Connect to save.";
   }catch(err){
-    el.style.color="#A32D2D"; el.textContent="✗ Failed: "+err.message; scriptUrl=prev;
+    el.style.color="#A32D2D";el.textContent="✗ Failed: "+err.message;scriptUrl=prev;
   }
 }
 
-async function loadEvents(showSpinner){
-  if(!scriptUrl){setStatus("","Not connected — paste your Apps Script URL above");renderCal();return;}
-  if(showSpinner) setStatus("","Loading...");
+async function loadEvents(spinner){
+  if(!scriptUrl){setStatus("","Not connected — paste your Apps Script URL above");renderCal();renderBrief();return;}
+  if(spinner)setStatus("","Loading...");
   try{
-    const data=await gasCall({action:"getEvents"});
-    if(data.error) throw new Error(data.error);
-    events=(data.events||[]).map(e=>({
-      ...e, id:String(e.id),
-      dateStart:e.dateStart||e.date||"",
-      dateEnd:e.dateEnd||(e.dateStart||e.date||"")
-    }));
+    const d=await gasCall({action:"getEvents"});
+    if(d.error)throw new Error(d.error);
+    events=(d.events||[]).map(e=>({...e,id:String(e.id),dateStart:e.dateStart||e.date||"",dateEnd:e.dateEnd||(e.dateStart||e.date||"")}));
     document.getElementById("error-banner").classList.add("hidden");
     setStatus("ok","Live — "+events.length+" event(s) — updated "+new Date().toLocaleTimeString());
     renderCal();
+    renderBrief();
   }catch(err){
     setStatus("err","Connection failed");
     document.getElementById("error-title").textContent="Could not load events";
     document.getElementById("error-msg").textContent=err.message;
     document.getElementById("error-banner").classList.remove("hidden");
-    renderCal();
+    renderCal();renderBrief();
   }
 }
 
+function todayStr(){const n=new Date();return n.getFullYear()+"-"+pad(n.getMonth()+1)+"-"+pad(n.getDate());}
+function dateInRange(ds,ev){const s=ev.dateStart||ev.date||"";const e=ev.dateEnd||s;return ds>=s&&ds<=e;}
+function pillColor(ev){
+  if(ev.activity==="Block")return{bg:"#EEEDFE",tc:"#3C3489"};
+  return{bg:DEPT_BG[ev.dept]||"#eee",tc:DEPT_TC[ev.dept]||"#555"};
+}
+function pillLabel(ev){return ev.activity+" - "+ev.location;}
+
+// ── Daily Brief ───────────────────────────────────────────────
+function renderBrief(){
+  const now=new Date();
+  const ts=todayStr();
+  document.getElementById("brief-dayname").textContent=DAYS[now.getDay()];
+  document.getElementById("brief-date").textContent=MONTHS[now.getMonth()]+" "+now.getDate()+", "+now.getFullYear();
+  const todayEvts=events.filter(ev=>dateInRange(ts,ev));
+  document.getElementById("brief-count").textContent=todayEvts.length+(todayEvts.length===1?" activity":" activities");
+  if(todayEvts.length===0){
+    document.getElementById("brief-body").innerHTML=`<div class="brief-empty">No activities scheduled today.</div>`;
+    return;
+  }
+  document.getElementById("brief-body").innerHTML=todayEvts.map(ev=>{
+    const col=pillColor(ev);
+    const isMulti=ev.dateEnd&&ev.dateEnd!==ev.dateStart;
+    const multiTag=isMulti?`<div class="brief-multiday">Until ${ev.dateEnd}</div>`:"";
+    const noteTag=ev.note?`<div class="brief-note">${ev.note}</div>`:"";
+    return `<div class="brief-item" onclick="openView('${ev.id}',event)">
+      <div class="brief-top">
+        <span class="brief-badge" style="background:${col.bg};color:${col.tc}">${ev.dept}</span>
+        <span class="brief-act">${ev.activity}</span>
+      </div>
+      <div class="brief-loc">${ev.location}</div>
+      <div class="brief-subloc">${ev.sublocation}</div>
+      ${multiTag}
+      ${noteTag}
+    </div>`;
+  }).join("");
+}
+
+// ── Calendar ──────────────────────────────────────────────────
 function cm(d){curMonth+=d;if(curMonth>11){curMonth=0;curYear++;}if(curMonth<0){curMonth=11;curYear--;}renderMonth();renderCal();}
 function renderMonth(){document.getElementById("mtitle").textContent=MONTHS[curMonth]+" "+curYear;}
-
-function dateInRange(ds,ev){
-  const s=ev.dateStart||ev.date||"";
-  const e=ev.dateEnd||s;
-  return ds>=s&&ds<=e;
-}
-
-function pillColor(ev){
-  if(ev.activity==="Block") return {bg:"#EEEDFE",tc:"#3C3489"};
-  return {bg:DEPT_BG[ev.dept]||"#eee",tc:DEPT_TC[ev.dept]||"#555"};
-}
-
-function pillLabel(ev){
-  // Show "Activity - Location" e.g. "Block - Monu Island"
-  return ev.activity+" - "+ev.location;
-}
 
 function renderCal(){
   const grid=document.getElementById("cal-grid");
@@ -303,37 +374,31 @@ function renderCal(){
   const first=new Date(curYear,curMonth,1).getDay();
   const dim=new Date(curYear,curMonth+1,0).getDate();
   const dipm=new Date(curYear,curMonth,0).getDate();
-  const today=new Date();
+  const ts=todayStr();
   let cells=[];
-  for(let i=0;i<first;i++) cells.push({day:dipm-first+1+i,cur:false});
-  for(let i=1;i<=dim;i++) cells.push({day:i,cur:true});
-  while(cells.length%7!==0) cells.push({day:cells.length-first-dim+1,cur:false});
+  for(let i=0;i<first;i++)cells.push({day:dipm-first+1+i,cur:false});
+  for(let i=1;i<=dim;i++)cells.push({day:i,cur:true});
+  while(cells.length%7!==0)cells.push({day:cells.length-first-dim+1,cur:false});
   cells.forEach(c=>{
     const ds=`${curYear}-${pad(curMonth+1)}-${pad(c.day)}`;
-    const isToday=c.cur&&today.getFullYear()===curYear&&today.getMonth()===curMonth&&today.getDate()===c.day;
+    const isToday=c.cur&&ds===ts;
     const numHtml=isToday?`<span class="today-b">${c.day}</span>`:c.day;
     const evts=c.cur?events.filter(ev=>dateInRange(ds,ev)):[];
     const show=evts.slice(0,3);
-    const remaining=evts.length-3;
+    const rem=evts.length-3;
     const pills=show.map(ev=>{
       const col=pillColor(ev);
       return `<div class="epill" style="background:${col.bg};color:${col.tc}" onclick="openView('${ev.id}',event)">${pillLabel(ev)}</div>`;
     }).join("");
-    const morePill=remaining>0
-      ? `<div class="more-pill" onclick="openDayView('${ds}',event)">+${remaining} more</div>`
-      : "";
-    // clicking empty space on a day with events opens day view; on empty day opens add
-    let clickAttr="";
-    if(c.cur){
-      clickAttr=evts.length>0
-        ? `onclick="openDayView('${ds}',event)"`
-        : READ_ONLY ? "" : `onclick="openAdd('${ds}')"`;
-    }
-    html+=`<div class="dc${c.cur?"":" om"}" ${clickAttr}><div class="dn">${numHtml}</div>${pills}${morePill}</div>`;
+    const more=rem>0?`<div class="more-pill" onclick="openDayView('${ds}',event)">+${rem} more</div>`:"";
+    let ca="";
+    if(c.cur) ca=evts.length>0?`onclick="openDayView('${ds}',event)"`:READ_ONLY?"":` onclick="openAdd('${ds}')"`;
+    html+=`<div class="dc${c.cur?"":" om"}${isToday?" today-cell":""}" ${ca}><div class="dn">${numHtml}</div>${pills}${more}</div>`;
   });
   grid.innerHTML=html;
 }
 
+// ── Modals ────────────────────────────────────────────────────
 function openModal(html){document.getElementById("modal-box").innerHTML=html;document.getElementById("modal-overlay").classList.add("open");}
 function closeModal(){document.getElementById("modal-overlay").classList.remove("open");}
 function overlayClick(e){if(e.target===document.getElementById("modal-overlay"))closeModal();}
@@ -341,13 +406,12 @@ function subsOpts(loc,sel){return(LOCATIONS[loc]||[]).map(s=>`<option value="${s
 function updateSubs(){document.getElementById("f-sub").innerHTML=subsOpts(document.getElementById("f-loc").value,"");}
 function syncEnd(){const s=document.getElementById("f-start").value;const e=document.getElementById("f-end");if(!e.value||e.value<s)e.value=s;}
 
-// Day view — shows ALL events for a date
 function openDayView(ds,e){
   if(e)e.stopPropagation();
   const dayEvts=events.filter(ev=>dateInRange(ds,ev));
   const d=new Date(ds+"T00:00:00");
-  const title=MONTHS[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
-  const evtCards=dayEvts.map(ev=>{
+  const title=DAYS[d.getDay()]+", "+MONTHS[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+  const cards=dayEvts.map(ev=>{
     const col=pillColor(ev);
     const dd=ev.dateEnd&&ev.dateEnd!==ev.dateStart?`${ev.dateStart} → ${ev.dateEnd}`:ev.dateStart;
     return `<div class="edet day-events-list" onclick="openView('${ev.id}',event)" style="cursor:pointer">
@@ -360,7 +424,7 @@ function openDayView(ds,e){
     `<button class="primary" onclick="closeModal();setTimeout(()=>openAdd('${ds}'),50)">+ Add event</button>`;
   openModal(`
     <h3>${title}</h3>
-    ${evtCards||`<div style="color:var(--text3);font-size:13px;padding:1rem 0;">No events on this day.</div>`}
+    ${cards||`<div style="color:var(--text3);font-size:13px;padding:1rem 0;">No events on this day.</div>`}
     <div class="mbtns">
       <button class="secondary" onclick="closeModal()">Close</button>
       ${addBtn}
@@ -369,7 +433,7 @@ function openDayView(ds,e){
 }
 
 function openAdd(date){
-  if(READ_ONLY) return;
+  if(READ_ONLY)return;
   const t=new Date();
   const def=date||`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
   const fl=Object.keys(LOCATIONS)[0];
@@ -380,7 +444,7 @@ function openAdd(date){
       <div class="fr"><label>Start date</label><input type="date" id="f-start" value="${def}" onchange="syncEnd()"></div>
       <div class="fr"><label>End date <span style="font-weight:400;color:var(--text3)">(optional)</span></label><input type="date" id="f-end" value="${def}"></div>
     </div>
-    <div class="date-hint">Same date = single day. Different end date = multi-day event.</div>
+    <div class="date-hint">Same date = single day. Different end date = multi-day.</div>
     <div class="slabel">Who &amp; what</div>
     <div class="frow">
       <div class="fr"><label>Submitted by</label><select id="f-dept">${DEPTS.map(d=>`<option>${d}</option>`).join("")}</select></div>
@@ -412,8 +476,8 @@ async function saveAdd(){
       location:document.getElementById("f-loc").value,
       sublocation:document.getElementById("f-sub").value,
       note:document.getElementById("f-note").value.trim()});
-    if(r.error) throw new Error(r.error);
-    closeModal(); await loadEvents(true);
+    if(r.error)throw new Error(r.error);
+    closeModal();await loadEvents(true);
   }catch(err){setSaving("smsg","sbtn",false);alert("Could not save:\n"+err.message);}
 }
 
@@ -423,7 +487,7 @@ function openView(id,e){
   if(!ev)return;
   const col=pillColor(ev);
   const dd=ev.dateEnd&&ev.dateEnd!==ev.dateStart?`${ev.dateStart} → ${ev.dateEnd}`:ev.dateStart;
-  const editDelBtns=READ_ONLY?"":
+  const editDel=READ_ONLY?"":
     `<button class="danger" onclick="deleteEvent('${id}')">Delete</button>
      <button class="secondary" onclick="openEdit('${id}')">Edit</button>`;
   openModal(`
@@ -434,14 +498,14 @@ function openView(id,e){
       ${ev.note?`<div class="en">${ev.note}</div>`:""}
     </div>
     <div class="mbtns">
-      ${editDelBtns}
+      ${editDel}
       <button class="primary" onclick="closeModal()">Close</button>
     </div>
   `);
 }
 
 function openEdit(id){
-  if(READ_ONLY) return;
+  if(READ_ONLY)return;
   const ev=events.find(x=>String(x.id)===String(id));
   if(!ev)return;
   const de=ev.dateEnd||ev.dateStart;
@@ -482,8 +546,8 @@ async function saveEdit(id){
       location:document.getElementById("f-loc").value,
       sublocation:document.getElementById("f-sub").value,
       note:document.getElementById("f-note").value.trim()});
-    if(r.error) throw new Error(r.error);
-    closeModal(); await loadEvents(true);
+    if(r.error)throw new Error(r.error);
+    closeModal();await loadEvents(true);
   }catch(err){setSaving("emsg","ebtn",false);alert("Could not save: "+err.message);}
 }
 
@@ -491,7 +555,7 @@ async function deleteEvent(id){
   if(!confirm("Delete this event?"))return;
   try{
     await gasCall({action:"deleteEvent",id});
-    closeModal(); await loadEvents(true);
+    closeModal();await loadEvents(true);
   }catch(err){alert("Could not delete: "+err.message);}
 }
 
